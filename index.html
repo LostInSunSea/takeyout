@@ -1,0 +1,75 @@
+<html>
+<head>
+    <title>Test Page</title>
+    <script type="text/javascript" src="//platform.linkedin.com/in.js">
+        api_key:   75d2ob10meoc3a
+        authorize: false
+        onLoad:    onLinkedInLoad
+        lang:      en_US
+    </script>
+</head>
+<body>
+<p> Log in with linked in</p>
+<script type="in/Login"></script>
+
+<script type="text/javascript">
+
+    // Setup an event listener to make an API call once auth is complete
+    function onLinkedInLoad() {
+        IN.Event.on(IN, "auth", getProfileData);
+    }
+
+    // Handle the successful return from the API call
+    function onSuccess(data) {
+        console.log(data);
+        /*var url = "./login.php";
+         var method = "POST";
+         var postData = data;
+         var async = true;
+         var request = new XMLHttpRequest();
+         request.onload = function () {
+         var status = request.status;
+         console.log(status);
+         }
+         request.open(method, url, async);
+
+         request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+         request.send(postData);*/
+        var name = document.getElementById("name");
+        name.value = data.formattedName;
+        var job = document.getElementById("job");
+        job.value = data.headline;
+        var id = document.getElementById("id");
+        id.value = data.id;
+        var location = document.getElementById("location");
+        location.value = data.location.name;
+        var picture = document.getElementById("picture");
+        picture.value = data.pictureUrl;
+        var industry = document.getElementById("industry");
+        industry.value = data.industry;
+        javascript:document.myform.submit();
+    }
+
+    // Handle an error response from the API call
+    function onError(error) {
+        console.log(error);
+    }
+
+    // Use the API call wrapper to request the member's basic profile data
+    function getProfileData() {
+        //IN.API.Raw("/people/~").result(onSuccess).error(onError);
+        IN.API.Raw("/people/~:(id,location,formatted-name,industry,summary,specialties,positions,headline,picture-url)?format=json").result(onSuccess).error(onError);
+    }
+
+</script>
+<form action="./login.php" method="post" name="myform">
+    <input name="Name" id="name" type="hidden" value="" />
+    <input name="Job" id="job" type="hidden" value="" />
+    <input name="ID" id="id" type="hidden" value="" />
+    <input name="Location" id="location" type="hidden" value="" />
+    <input name="Picture" id="picture" type="hidden" value="" />
+    <input name="Industry" id="industry" type="hidden" value="" />
+</form>
+</body>
+</html>
