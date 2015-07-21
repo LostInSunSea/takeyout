@@ -30,6 +30,7 @@
                     </div>
                 </div>
                 <div class="panel-body msg_container_base">
+                    <button class="btn btn-primary btn-sm" ng-click="loadMore()" id="btn-load-more">Load More Messages...</button>
                     <div ng-repeat="message in messages">
                     <div class={{message.base}}>
                         <div class={{message.leftClass}}>

@@ -8,8 +8,13 @@ app.controller('chatCtrl', function($scope, $interval) {
     var myPicURL = "http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg";
     var toPicURL = "http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg";
     var lastMessageIndex = 0;
+    var newMsgCount = 0;
+    var totalMessageCount;
 
-    //TODO: Query id, toID, convoID, and both pictures from convo instead of using cookie data
+    //By default, start with by retrieving the last 10 messages
+    var messageLimit = 10;
+
+    //TODO: Query id, toID, convoID, and both pictures from convo instead of using session data
 
     $.get(
         "get_user_data.php",
@@ -18,9 +23,10 @@ app.controller('chatCtrl', function($scope, $interval) {
             var userParsed = JSON.parse(data);
             //TODO: myID = userParsed.ID;
             myPicURL = userParsed.PicURL;
+            console.log("Retrieving initial " + messageLimit + " messages");
             $.get(
                 "retrieve_message.php",
-                {conversationID : convoID},
+                {conversationID : convoID, limit:messageLimit},
                 function(data) {
                     var parsed = JSON.parse(data);
                     for(var i = 0; i < parsed.length; i++) {
@@ -69,7 +75,7 @@ app.controller('chatCtrl', function($scope, $interval) {
                 for(var i = 0; i < parsed.length; i++) {
                     var obj = parsed[i];
                     lastMessageIndex = obj.id;
-
+                    newMsgCount += 1;
                     if (obj.from == myID)
                     {
                         $scope.messages.push({
@@ -122,5 +128,50 @@ app.controller('chatCtrl', function($scope, $interval) {
         });
 
         $scope.$digest();
+    }
+
+    $scope.loadMore = function(){
+        messageLimit += 10;
+        console.log("Retrieving " + (messageLimit + newMsgCount) + " messages");
+        $scope.messages = [];
+        totalMessageCount = messageLimit + newMsgCount;
+        $.get(
+            "retrieve_message.php",
+            {conversationID : convoID, limit:totalMessageCount},
+            function(data) {
+                var parsed = JSON.parse(data);
+                for(var i = 0; i < parsed.length; i++) {
+                    var obj = parsed[i];
+                    lastMessageIndex = obj.id;
+
+                    if (obj.from == myID)
+                    {
+                        $scope.messages.push({
+                            message: obj.message,
+                            leftPic:"https://upload.wikimedia.org/wikipedia/en/4/45/One_black_Pixel.png",
+                            rightPic:myPicURL,
+                            leftClass:"",
+                            rightClass:"col-md-2 col-xs-2 avatar",
+                            dateTime:"Timothy • 51 min",
+                            base:"row msg_container base_sent"
+                        });
+                    }
+                    else
+                    {
+                        $scope.messages.push({
+                            message:obj.message,
+                            leftPic:toPicURL,
+                            rightPic:"https://upload.wikimedia.org/wikipedia/en/4/45/One_black_Pixel.png",
+                            leftClass:"col-md-2 col-xs-2 avatar",
+                            rightClass:"",
+                            dateTime:"Robb • 32 min",
+                            base:"row msg_container base_receive"
+                        });
+                    }
+                }
+
+                $scope.$digest();
+            }
+        );
     }
 });
