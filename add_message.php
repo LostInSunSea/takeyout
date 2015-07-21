@@ -20,7 +20,10 @@
     $sql = "INSERT INTO reply (id, message, from_user, to_user, ip, time, conversation_id)
             VALUES (NULL, '$message', '$from', '$to', NULL, NULL, '$convoID')";
 
-    if ($conn->query($sql) === FALSE)
+    if ($conn->query($sql) === TRUE)
+    {
+        echo $conn->insert_id;
+    } else
     {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

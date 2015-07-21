@@ -10,6 +10,7 @@
 
     $_SESSION["Name"] = $name;
     $_SESSION["ID"] = $id;
+    $_SESSION["PicURL"] = $picture;
 
     $dbHost = "localhost";
     $dbUser = "root";

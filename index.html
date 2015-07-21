@@ -22,20 +22,6 @@
     // Handle the successful return from the API call
     function onSuccess(data) {
         console.log(data);
-        /*var url = "./login.php";
-         var method = "POST";
-         var postData = data;
-         var async = true;
-         var request = new XMLHttpRequest();
-         request.onload = function () {
-         var status = request.status;
-         console.log(status);
-         }
-         request.open(method, url, async);
-
-         request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
-         request.send(postData);*/
         var name = document.getElementById("name");
         name.value = data.formattedName;
         var job = document.getElementById("job");
