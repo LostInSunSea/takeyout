@@ -23,6 +23,7 @@
             while($row = mysqli_fetch_array ($result))
             {
                 $bus = array(
+                    'id' => $row['id'],
                     'message' => $row['message'],
                     'from' => $row['from_user'],
                 );

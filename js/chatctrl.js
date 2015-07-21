@@ -1,5 +1,5 @@
 var app = angular.module('chat', []);
-app.controller('chatCtrl', function($scope) {
+app.controller('chatCtrl', function($scope, $interval) {
     $scope.chatName = "myChat";
 
     var myID = "Jerry";
@@ -7,8 +7,51 @@ app.controller('chatCtrl', function($scope) {
     var toID = "Justin";
     var myPicURL = "http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg";
     var toPicURL = "http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg";
+    var lastMessageIndex = 0;
 
     //TODO: Query id, toID, convoID, and both pictures from convo
+
+    $interval(function(){
+        console.log("Refreshing chat with last message index of " + lastMessageIndex);
+        $.get(
+            "update_message.php",
+            {conversationID : convoID, index:lastMessageIndex},
+            function(data) {
+                var parsed = JSON.parse(data);
+                for(var i = 0; i < parsed.length; i++) {
+                    var obj = parsed[i];
+                    lastMessageIndex = obj.id;
+
+                    if (obj.from == myID)
+                    {
+                        $scope.messages.push({
+                            message: obj.message,
+                            leftPic:"https://upload.wikimedia.org/wikipedia/en/4/45/One_black_Pixel.png",
+                            rightPic:myPicURL,
+                            leftClass:"",
+                            rightClass:"col-md-2 col-xs-2 avatar",
+                            dateTime:"Timothy • 51 min",
+                            base:"row msg_container base_sent"
+                        });
+                    }
+                    else
+                    {
+                        $scope.messages.push({
+                            message:obj.message,
+                            leftPic:toPicURL,
+                            rightPic:"https://upload.wikimedia.org/wikipedia/en/4/45/One_black_Pixel.png",
+                            leftClass:"col-md-2 col-xs-2 avatar",
+                            rightClass:"",
+                            dateTime:"Robb • 32 min",
+                            base:"row msg_container base_receive"
+                        });
+                    }
+                }
+
+                $scope.$digest();
+            }
+        );
+    },5000);
 
     $scope.messages=[];
 
@@ -19,6 +62,7 @@ app.controller('chatCtrl', function($scope) {
             var parsed = JSON.parse(data);
             for(var i = 0; i < parsed.length; i++) {
                 var obj = parsed[i];
+                lastMessageIndex = obj.id;
 
                 if (obj.from == myID)
                 {
@@ -46,7 +90,6 @@ app.controller('chatCtrl', function($scope) {
                 }
             }
 
-
             $scope.$digest();
         }
     );
@@ -66,7 +109,7 @@ app.controller('chatCtrl', function($scope) {
         document.getElementById("btn-input").value = "";
 
         $.post( "add_message.php", { message: message, from:myID, to:toID, convoID:convoID}, function(data, status){
-            alert("Data: " + data + "\nStatus: " + status);
+            lastMessageIndex = data;
         });
 
         $scope.$digest();
