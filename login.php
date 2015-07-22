@@ -26,18 +26,19 @@
     $sql = "SELECT * FROM User WHERE id = '$id'";
     if ($result=mysqli_query($conn,$sql))
     {
+        //If the user already exists, go to homepage
         if (mysqli_num_rows($result))
         {
             header( 'Location: ./chatwindow.html' );
         }
-        else
+        else //Else create a new record for the user and have them enter additional information
         {
             $sql = "INSERT INTO User (id, job, name, location, pictureurl, industry)
         VALUES ('$id', '$job', '$name', '$location', '$picture', '$industry')";
 
             if ($conn->query($sql) === TRUE)
             {
-                header( 'Location: ./chatwindow.html' );
+                header( 'Location: ./moreInfo.html' );
             } else
             {
                 echo "Error: " . $sql . "<br>" . $conn->error;
