@@ -22,8 +22,9 @@
 
     if (mysqli_query($conn, $sql))
     {
-        echo "Record updated successfully";
-    } else
+        header( 'Location: ./chatwindow.html' );
+    }
+    else
     {
         echo "Error updating record: " . mysqli_error($conn);
     }

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./bower_components/angularjs/angular.js"></script>
+    <script src="./js/connectctrl.js"></script>
+</head>
+<body>
+<div ng-app="connect" ng-controller="connectCtrl">
+    <div ng-repeat="user in users">
+        <img src={{user.pictureurl}} style="width:200px;height:200px;">
+        <h1>{{user.name}}</h1>
+        <h3>{{user.tagline}}</h3>
+        <p>Bio: {{user.bio}}</p>
+        <p>Job: {{user.job}}</p>
+        <p>Location: {{user.location}}</p>
+        <p>Industry: {{user.industry}}</p>
+    </div>
+</div>
+</body>
+</html>
