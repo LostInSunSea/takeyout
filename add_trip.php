@@ -7,8 +7,10 @@
         echo "Error: Not logged in!";
     }
 
-    $tagLine = $_POST['Tagline'];
-    $bio = $_POST['Bio'];
+    $start = $_POST['Start'];
+    $end = $_POST['End'];
+    $country = $_POST['Country'];
+    $city = $_POST['City'];
 
     $id = $_SESSION["ID"];
 
@@ -23,11 +25,12 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "UPDATE User SET bio = '$bio', tagline = '$tagLine' WHERE id = '$id'";
+    $sql = "INSERT INTO Trip (id, country, city, owner, start, end)
+            VALUES (NULL, '$country', '$city', '$id', '$start', '$end')";
 
     if (mysqli_query($conn, $sql))
     {
-        header( 'Location: ./chatwindow.html' );
+        echo "Successfully inserted";
     }
     else
     {

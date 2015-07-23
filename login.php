@@ -31,7 +31,7 @@
         {
             header( 'Location: ./chatwindow.html' );
         }
-        else //Else create a new record for the user and have them enter additional information
+        else
         {
             $sql = "INSERT INTO User (id, job, name, location, pictureurl, industry)
         VALUES ('$id', '$job', '$name', '$location', '$picture', '$industry')";
