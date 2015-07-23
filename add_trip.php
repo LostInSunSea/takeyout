@@ -25,6 +25,21 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
+    $sql = "SELECT * FROM Trip WHERE owner = '$id'";
+    if ($result = mysqli_query($conn, $sql))
+    {
+        if (mysqli_num_rows($result))
+        {
+            while($row = mysqli_fetch_array ($result))
+            {
+                if (!(($start < $row['start'] && $end < $row['start']) || ($start > $row['end'] && $end > $row['end'])))
+                {
+                    die("Error: cannot schedule trip due to overlap");
+                }
+            }
+        }
+    }
+
     $sql = "INSERT INTO Trip (id, country, city, owner, start, end)
             VALUES (NULL, '$country', '$city', '$id', '$start', '$end')";
 
