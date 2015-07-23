@@ -19,6 +19,22 @@
     $dbPass = "yourpasswordhere";
     $dbDatabase = "test";
 
+    date_default_timezone_set("America/Tijuana");
+
+    if ($end < $start)
+    {
+        die ("Error: ending has to be after the start of the trip");
+    }
+    if ($end == $start)
+    {
+        die ("Error: cannot have a trip start and end on the same day");
+    }
+
+    if ($end < date("Y-m-d"))
+    {
+        die ("Error: Cannot have a end date before current date");
+    }
+
     $conn = new mysqli($dbHost, $dbUser, $dbPass, $dbDatabase);
     if ($conn->connect_error)
     {
@@ -32,6 +48,7 @@
         {
             while($row = mysqli_fetch_array ($result))
             {
+                // Make sure that the planned trip does not overlap with anything currently planned trip
                 if (!(($start < $row['start'] && $end < $row['start']) || ($start > $row['end'] && $end > $row['end'])))
                 {
                     die("Error: cannot schedule trip due to overlap");
