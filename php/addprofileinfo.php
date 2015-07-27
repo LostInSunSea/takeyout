@@ -27,7 +27,7 @@
 
     if (mysqli_query($conn, $sql))
     {
-        header( 'Location: ./chatwindow.html' );
+        header( 'Location: ../chatwindow.html' );
     }
     else
     {

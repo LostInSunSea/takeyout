@@ -10,7 +10,7 @@
     var vm = this;
 
       $.get(
-          "retrieve_message.php",
+          "./php/retrieve_message.php",
           {conversationID : 123},
           function(data) {
               var parsed = JSON.parse(data);
@@ -47,7 +47,7 @@
     vm.sendMessage = function(message, username) {
       if(message && message !== '' && username) {
 
-          $.post( "add_message.php", { message: message} );
+          $.post( "./php/add_message.php", { message: message} );
 
           vm.messages.push({
           'username': username,

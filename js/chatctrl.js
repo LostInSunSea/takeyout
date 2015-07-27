@@ -17,7 +17,7 @@ app.controller('chatCtrl', function($scope, $interval) {
     //TODO: Query id, toID, convoID, and both pictures from convo instead of using session data
 
     $.get(
-        "get_user_data.php",
+        "./php/get_user_data.php",
         {},
         function(data){
             var userParsed = JSON.parse(data);
@@ -25,7 +25,7 @@ app.controller('chatCtrl', function($scope, $interval) {
             myPicURL = userParsed.PicURL;
             console.log("Retrieving initial " + messageLimit + " messages");
             $.get(
-                "retrieve_message.php",
+                "./php/retrieve_message.php",
                 {conversationID : convoID, limit:messageLimit},
                 function(data) {
                     var parsed = JSON.parse(data);
@@ -68,7 +68,7 @@ app.controller('chatCtrl', function($scope, $interval) {
     $interval(function(){
         console.log("Refreshing chat with last message index of " + lastMessageIndex);
         $.get(
-            "update_message.php",
+            "./php/update_message.php",
             {conversationID : convoID, index:lastMessageIndex},
             function(data) {
                 var parsed = JSON.parse(data);
@@ -123,7 +123,7 @@ app.controller('chatCtrl', function($scope, $interval) {
 
         document.getElementById("btn-input").value = "";
 
-        $.post( "add_message.php", { message: message, from:myID, to:toID, convoID:convoID}, function(data, status){
+        $.post( "./php/add_message.php", { message: message, from:myID, to:toID, convoID:convoID}, function(data, status){
             lastMessageIndex = data;
         });
 
@@ -136,7 +136,7 @@ app.controller('chatCtrl', function($scope, $interval) {
         $scope.messages = [];
         totalMessageCount = messageLimit + newMsgCount;
         $.get(
-            "retrieve_message.php",
+            "./php/retrieve_message.php",
             {conversationID : convoID, limit:totalMessageCount},
             function(data) {
                 var parsed = JSON.parse(data);

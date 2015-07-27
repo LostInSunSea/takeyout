@@ -29,7 +29,7 @@
         //If the user already exists, go to homepage
         if (mysqli_num_rows($result))
         {
-            header( 'Location: ./chatwindow.html' );
+            header( 'Location: ../chatwindow.html' );
         }
         else
         {
@@ -38,7 +38,7 @@
 
             if ($conn->query($sql) === TRUE)
             {
-                header( 'Location: ./moreInfo.html' );
+                header( 'Location: ../moreInfo.html' );
             } else
             {
                 echo "Error: " . $sql . "<br>" . $conn->error;
