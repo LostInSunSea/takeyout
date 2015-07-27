@@ -1,8 +1,18 @@
 var app = angular.module('connect', []);
 app.controller('connectCtrl', function($scope, $interval) {
     $scope.users = [];
+    $scope.currentTrip = "There is no current trip, plan one now?";
 
     var myID;
+
+    $.get(
+        "update_travel_information.php",
+        {},
+        function(data) {
+
+            $scope.digest();
+        }
+    );
 
     $.get(
         "get_users.php",

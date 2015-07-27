@@ -9,6 +9,10 @@
 </head>
 <body>
 <div ng-app="connect" ng-controller="connectCtrl">
+    <h1>Current Trip</h1>
+    <p>{{currentTrip}}</p>
+    <br><br><br>
+
     <div ng-repeat="user in users">
         <img src={{user.pictureurl}} style="width:200px;height:200px;">
         <h1>{{user.name}}</h1>
