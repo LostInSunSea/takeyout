@@ -19,6 +19,17 @@
         IN.Event.on(IN, "auth", getProfileData);
     }
 
+    if (navigator.geolocation)
+    { navigator.geolocation.getCurrentPosition(showPosition); }
+    else { console.log("Geolocation is not supported by this browser."); }
+
+    function showPosition(position)
+    {
+        lat = position.coords.latitude;
+        long = position.coords.longitude;
+        console.log("Latitude: " + position.coords.latitude + " Longitude: " + position.coords.longitude);
+    }
+
     // Handle the successful return from the API call
     function onSuccess(data) {
         console.log(data);
