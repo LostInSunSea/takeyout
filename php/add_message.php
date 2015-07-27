@@ -6,6 +6,11 @@
     $to = htmlspecialchars($_POST['to']);
     $convoID = htmlspecialchars($_POST['convoID']);
 
+    if ($message = "")
+    {
+        die("Empty Message");
+    }
+
     $dbHost = "localhost";
     $dbUser = "root";
     $dbPass = "yourpasswordhere";

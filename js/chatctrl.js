@@ -111,21 +111,28 @@ app.controller('chatCtrl', function($scope, $interval) {
 
     $scope.sendChat = function(){
         var message = document.getElementById("btn-input").value;
-        $scope.messages.push({
-            message: message,
-            leftPic:"https://upload.wikimedia.org/wikipedia/en/4/45/One_black_Pixel.png",
-            rightPic:myPicURL,
-            leftClass:"",
-            rightClass:"col-md-2 col-xs-2 avatar",
-            dateTime:"Timothy • 51 min",
-            base:"row msg_container base_sent"
-        });
+        if (message == "")
+        {
+            return;
+        }
+        else {
+            $scope.messages.push({
+                message: message,
+                leftPic: "https://upload.wikimedia.org/wikipedia/en/4/45/One_black_Pixel.png",
+                rightPic: myPicURL,
+                leftClass: "",
+                rightClass: "col-md-2 col-xs-2 avatar",
+                dateTime: "Timothy • 51 min",
+                base: "row msg_container base_sent"
+            })
+
+            $.post( "./php/add_message.php", { message: message, from:myID, to:toID, convoID:convoID}, function(data, status){
+                lastMessageIndex = data;
+            });
+        };
 
         document.getElementById("btn-input").value = "";
 
-        $.post( "./php/add_message.php", { message: message, from:myID, to:toID, convoID:convoID}, function(data, status){
-            lastMessageIndex = data;
-        });
 
         $scope.$digest();
     }
