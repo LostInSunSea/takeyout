@@ -7,6 +7,7 @@
         onLoad:    onLinkedInLoad
         lang:      en_US
     </script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 </head>
 <body>
 <p> Log in with linked in</p>
@@ -28,7 +29,26 @@
         lat = position.coords.latitude;
         long = position.coords.longitude;
         console.log("Latitude: " + position.coords.latitude + " Longitude: " + position.coords.longitude);
+        var geocoder = new google.maps.Geocoder();
+        var latlng = new google.maps.LatLng(lat, long);
+        geocoder.geocode({'location': latlng}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                if (results[1]) {
+                    for (var x in results[1].address_components) {
+                        var curComponent = results[1].address_components[x];
+                        if (curComponent.types[0] == "locality") {
+                        console.log(curComponent.long_name);
+                        }
+                    }
+                } else {
+                    window.alert('No results found');
+                }
+            } else {
+                window.alert('Geocoder failed due to: ' + status);
+            }
+        });
     }
+
 
     // Handle the successful return from the API call
     function onSuccess(data) {
