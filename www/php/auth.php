@@ -7,4 +7,6 @@
     "state=987654321" +
     "&scope=r_basicprofile", array("timeout"=>1), $info);
 
+
+    echo $info;
 ?>
