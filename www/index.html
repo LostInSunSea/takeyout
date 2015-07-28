@@ -1,0 +1,93 @@
+<html>
+<head>
+    <title>Test Page</title>
+    <script type="text/javascript" src="//platform.linkedin.com/in.js">
+        api_key:   75d2ob10meoc3a
+        authorize: false
+        onLoad:    onLinkedInLoad
+        lang:      en_US
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+</head>
+<body>
+<p> Log in with linked in</p>
+<script type="in/Login"></script>
+
+<script type="text/javascript">
+
+    // Setup an event listener to make an API call once auth is complete
+    function onLinkedInLoad() {
+        IN.Event.on(IN, "auth", getProfileData);
+    }
+
+    if (navigator.geolocation)
+    { navigator.geolocation.getCurrentPosition(showPosition); }
+    else { console.log("Geolocation is not supported by this browser."); }
+
+    function showPosition(position)
+    {
+        lat = position.coords.latitude;
+        long = position.coords.longitude;
+        console.log("Latitude: " + position.coords.latitude + " Longitude: " + position.coords.longitude);
+        var geocoder = new google.maps.Geocoder();
+        var latlng = new google.maps.LatLng(lat, long);
+        geocoder.geocode({'location': latlng}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                if (results[1]) {
+                    for (var x in results[1].address_components) {
+                        var curComponent = results[1].address_components[x];
+                        if (curComponent.types[0] == "locality") {
+                        console.log(curComponent.long_name);
+                        }
+                    }
+                } else {
+                    window.alert('No results found');
+                }
+            } else {
+                window.alert('Geocoder failed due to: ' + status);
+            }
+        });
+    }
+
+
+    // Handle the successful return from the API call
+    function onSuccess(data) {
+        console.log(data);
+        var name = document.getElementById("name");
+        name.value = data.formattedName;
+        var job = document.getElementById("job");
+        job.value = data.headline;
+        var id = document.getElementById("id");
+        id.value = data.id;
+        var location = document.getElementById("location");
+        location.value = data.location.name;
+        var picture = document.getElementById("picture");
+        picture.value = data.pictureUrl;
+        var industry = document.getElementById("industry");
+        industry.value = data.industry;
+        javascript:document.myform.submit();
+    }
+
+    // Handle an error response from the API call
+    function onError(error) {
+        console.log(error);
+    }
+
+    // Use the API call wrapper to request the member's basic profile data
+    function getProfileData() {
+        //IN.API.Raw("/people/~").result(onSuccess).error(onError);
+        IN.API.Raw("/people/~:(id,location,formatted-name,industry,summary,specialties,positions,headline,picture-url)?format=json").result(onSuccess).error(onError);
+    }
+
+</script>
+<div>Hello Jerry!</div>
+<form action="http://kawaiikrew.net/php/login.php" method="post" name="myform">
+    <input name="Name" id="name" type="hidden" value="" />
+    <input name="Job" id="job" type="hidden" value="" />
+    <input name="ID" id="id" type="hidden" value="" />
+    <input name="Location" id="location" type="hidden" value="" />
+    <input name="Picture" id="picture" type="hidden" value="" />
+    <input name="Industry" id="industry" type="hidden" value="" />
+</form>
+</body>
+</html>
