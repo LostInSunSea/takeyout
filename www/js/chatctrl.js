@@ -25,7 +25,7 @@ app.controller('chatCtrl', function($scope, $interval) {
             myPicURL = userParsed.PicURL;
             console.log("Retrieving initial " + messageLimit + " messages");
             $.get(
-                "./php/retrieve_message.php",
+                "http://kawaiikrew.net/www/php/retrieve_message.php",
                 {conversationID : convoID, limit:messageLimit},
                 function(data) {
                     var parsed = JSON.parse(data);
@@ -68,7 +68,7 @@ app.controller('chatCtrl', function($scope, $interval) {
     $interval(function(){
         console.log("Refreshing chat with last message index of " + lastMessageIndex);
         $.get(
-            "./php/update_message.php",
+            "http://kawaiikrew.net/www/php/update_message.php",
             {conversationID : convoID, index:lastMessageIndex},
             function(data) {
                 var parsed = JSON.parse(data);
@@ -143,7 +143,7 @@ app.controller('chatCtrl', function($scope, $interval) {
         $scope.messages = [];
         totalMessageCount = messageLimit + newMsgCount;
         $.get(
-            "./php/retrieve_message.php",
+            "http://kawaiikrew.net/www/php/retrieve_message.php",
             {conversationID : convoID, limit:totalMessageCount},
             function(data) {
                 var parsed = JSON.parse(data);

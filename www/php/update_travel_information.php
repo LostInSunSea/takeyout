@@ -4,10 +4,10 @@
 
     $id = $_SESSION["ID"];
 
-    $dbHost = "localhost";
+    $dbHost = "http://kawaiikrew.net";
     $dbUser = "root";
-    $dbPass = "yourpasswordhere";
-    $dbDatabase = "test";
+    $dbPass = "J^mpStrt";
+    $dbDatabase = "takeyout";
 
     date_default_timezone_set("America/Tijuana");
 

@@ -4,10 +4,10 @@
     $ID = htmlspecialchars($_GET['conversationID']);
     $limit = htmlspecialchars($_GET['limit']);
 
-    $dbHost = "localhost";
+    $dbHost = "http://kawaiikrew.net";
     $dbUser = "root";
-    $dbPass = "yourpasswordhere";
-    $dbDatabase = "test";
+    $dbPass = "J^mpStrt";
+    $dbDatabase = "takeyout";
 
     $conn = new mysqli($dbHost, $dbUser, $dbPass, $dbDatabase);
     if ($conn->connect_error)

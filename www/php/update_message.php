@@ -4,10 +4,10 @@ session_start();
 $ID = htmlspecialchars($_GET['conversationID']);
 $index = htmlspecialchars($_GET['index']);
 
-$dbHost = "localhost";
+$dbHost = "http://kawaiikrew.net";
 $dbUser = "root";
-$dbPass = "yourpasswordhere";
-$dbDatabase = "test";
+$dbPass = "J^mpStrt";
+$dbDatabase = "takeyout";
 
 $conn = new mysqli($dbHost, $dbUser, $dbPass, $dbDatabase);
 if ($conn->connect_error)

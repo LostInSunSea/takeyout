@@ -6,7 +6,7 @@ app.controller('connectCtrl', function($scope, $interval) {
     var myID;
 
     $.get(
-        "./php/update_travel_information.php",
+        "http://kawaiikrew.net/www/php/update_travel_information.php",
         {},
         function(data) {
 
@@ -15,7 +15,7 @@ app.controller('connectCtrl', function($scope, $interval) {
     );
 
     $.get(
-        "./php/get_users.php",
+        "http://kawaiikrew.net/www/php/get_users.php",
         {},
         function(data) {
             var parsed = JSON.parse(data);
