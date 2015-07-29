@@ -26,6 +26,6 @@ $result = curl_exec($curl);
 
 $decoded = json_decode($result, true);
 
-echo $decoded;
+echo $decoded['formattedName'];
 
 ?>
