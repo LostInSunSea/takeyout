@@ -25,7 +25,7 @@ $curl = curl_init('https://api.linkedin.com/v1/people/~:(id,location,formatted-n
 $result = curl_exec($curl);
 $decoded = json_decode($result, true);
 
-$dbHost = '127.0.0.1:3306';
+$dbHost = 'localhost';
 $dbUser = "root";
 $dbPass = "J^mpStrt";
 $dbDatabase = "takeyout";
