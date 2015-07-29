@@ -32,5 +32,7 @@ $server_output = curl_exec ($ch);
 
 curl_close ($ch);
 
-echo $server_output;
+$result = json_decode($server_output, true);
+
+echo $result['access_token'];
 ?>
