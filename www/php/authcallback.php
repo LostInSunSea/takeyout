@@ -27,6 +27,8 @@ echo "yolo";
 $result = curl_exec($curl);
 $decoded = json_decode($result, true);
 
+echo "no";
+
 $dbHost = "http://kawaiikrew.net";
 $dbUser = "root";
 $dbPass = "J^mpStrt";
@@ -40,6 +42,8 @@ if ($conn->connect_error)
 
 $id = $decoded['id'];
 $name = $decoded['formattedName'];
+
+echo "yes";
 
 $sql = "INSERT INTO user (id, name) VALUES ('$id', '$name')";
 if ($result=mysqli_query($conn,$sql))
