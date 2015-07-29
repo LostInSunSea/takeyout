@@ -23,7 +23,7 @@ $result = json_decode($server_output, true);
 $curl = curl_init();
 curl_setopt($curl, CURLOPT_URL,'https://api.linkedin.com/v1/people/~:(id,location,formatted-name,industry,summary,specialties,positions,headline,picture-urls::(original),picture-url,interests,languages,skills,date-of-birth)?oauth2_access_token=' . $result['access_token'] . '&format=json');
 //$curl = curl_init('https://api.linkedin.com/v1/people/~:(id,location,formatted-name,industry,summary,specialties,positions,headline,picture-urls::(original),picture-url,interests,languages,skills,date-of-birth)?oauth2_access_token=' . $result['access_token'] . '&format=json');
-curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
 
 $result = curl_exec($curl);
 $decoded = json_decode($result, true);
