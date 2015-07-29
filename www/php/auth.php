@@ -4,7 +4,8 @@
 
     //echo $info;
     //print_r($info);
+$curl = curl_init('http://example.com');
 
-    $response = http_get("http://www.example.com/", array("timeout"=>1), $info);
-    print_r($info);
+$resp = curl_exec($curl);
+echo $resp;
 ?>
