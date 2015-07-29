@@ -4,7 +4,7 @@
 
     //echo $info;
     //print_r($info);
-$curl = curl_init('http://example.com');
+$curl = curl_init('https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=75d2ob10meoc3a&redirect_uri=http://kawaiikrew.net/www/php/authcallback.php');
 
 $resp = curl_exec($curl);
 echo $resp;
