@@ -39,15 +39,10 @@ if ($conn->connect_error)
 $id = $decoded['id'];
 $name = $decoded['formattedName'];
 
-echo "yes";
-
 $sql = "INSERT INTO user (id, name) VALUES ('$id', '$name')";
 if ($result=mysqli_query($conn,$sql))
 {
-    if (mysqli_num_rows($result))
-    {
-        header('Location: ../chatwindow.html');
-    }
+
 }
 
 $conn->close();
