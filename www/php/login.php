@@ -15,7 +15,7 @@
     $dbHost = "http://kawaiikrew.net";
     $dbUser = "root";
     $dbPass = "J^mpStrt";
-    $dbDatabase = "takeyout";
+    $dbDatabase = "test";
 
     $conn = new mysqli($dbHost, $dbUser, $dbPass, $dbDatabase);
     if ($conn->connect_error)
