@@ -24,8 +24,7 @@ $curl = curl_init('https://api.linkedin.com/v1/people/~?oauth2_access_token=' . 
 
 $result = curl_exec($curl);
 
-$xml=simplexml_load_string($result) or die("Error: Cannot create object");
-print_r($xml);
+$xml = new SimpleXMLElement($result);
 
 echo $xml;
 
