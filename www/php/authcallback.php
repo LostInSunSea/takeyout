@@ -26,6 +26,6 @@ $result = curl_exec($curl);
 
 $xml = new SimpleXMLElement($result);
 
-echo $xml;
+echo $xml->person->id;
 
 ?>
