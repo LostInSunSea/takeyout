@@ -44,8 +44,6 @@ if ($conn->connect_error)
 $id = $decoded['id'];
 $name = $decoded['formattedName'];
 
-echo "INSERT INTO user (id, name) VALUES ('$id', '$name')";
-
 $sql = "INSERT INTO user (id, name) VALUES ('$id', '$name')";
 if ($conn->query($sql) === TRUE)
 {
