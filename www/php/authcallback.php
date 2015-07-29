@@ -39,10 +39,15 @@ if ($conn->connect_error)
 $id = $decoded['id'];
 $name = $decoded['formattedName'];
 
-$sql = "INSERT INTO user (id, name) VALUES ('$id', '$name')";
-if ($result=mysqli_query($conn,$sql))
-{
+echo "INSERT INTO user (id, name) VALUES ('$id', '$name')";
 
+$sql = "INSERT INTO user (id, name) VALUES ('$id', '$name')";
+if ($conn->query($sql) === TRUE)
+{
+    echo "Successful insert";
+} else
+{
+    echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
 $conn->close();
