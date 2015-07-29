@@ -1,10 +1,5 @@
 <?php
-
-    //$response = http_get("https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=75d2ob10meoc3a&redirect_uri=http://kawaiikrew.net/www/php/authcallback.php&state=987654321&scope=r_basicprofile", array("timeout"=>1), $info);
-
-    //echo $info;
-    //print_r($info);
-$curl = curl_init('https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=75d2ob10meoc3a&redirect_uri=http://kawaiikrew.net/www/php/authcallback.php&state=987654321&scope=r_basicprofile');
+$curl = curl_init('https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=75d2ob10meoc3a&redirect_uri=https%3A%2F%2Fwww.example.com%2Fauth%2Flinkedin&state=987654321&scope=r_basicprofile');
 
 $resp = curl_exec($curl);
 echo $resp;
