@@ -20,12 +20,8 @@ curl_close ($ch);
 
 $result = json_decode($server_output, true);
 
-$curl = curl_init('https://api.linkedin.com/v1/people/~?oauth2_access_token=' . $result['access_token']);
+$curl = curl_init('https://api.linkedin.com/v1/people/~?oauth2_access_token=' . $result['access_token'] . '&format=json');
 
 $result = curl_exec($curl);
-
-$xml = new SimpleXMLElement($result);
-
-echo $xml->person->id;
 
 ?>
