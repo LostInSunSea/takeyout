@@ -23,8 +23,31 @@ $result = json_decode($server_output, true);
 $curl = curl_init('https://api.linkedin.com/v1/people/~:(id,location,formatted-name,industry,summary,specialties,positions,headline,picture-urls::(original),picture-url,interests,languages,skills,date-of-birth)?oauth2_access_token=' . $result['access_token'] . '&format=json');
 
 $result = curl_exec($curl);
-
 $decoded = json_decode($result, true);
 
-print_r($decoded);
+$dbHost = "http://kawaiikrew.net";
+$dbUser = "root";
+$dbPass = "J^mpStrt";
+$dbDatabase = "takeyout";
+
+$conn = new mysqli($dbHost, $dbUser, $dbPass, $dbDatabase);
+if ($conn->connect_error)
+{
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$id = $decoded['id'];
+$name = $decoded['formattedName'];
+
+$sql = "INSERT INTO user (id, name) VALUES ('$id', '$name')";
+if ($result=mysqli_query($conn,$sql))
+{
+    if (mysqli_num_rows($result))
+    {
+        header('Location: ../chatwindow.html');
+    }
+}
+
+$conn->close();
+
 ?>
