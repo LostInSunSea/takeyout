@@ -25,7 +25,7 @@ $curl = curl_init('https://api.linkedin.com/v1/people/~:(id,location,formatted-n
 $result = curl_exec($curl);
 $decoded = json_decode($result, true);
 
-$dbHost = "http://kawaiikrew.net";
+$dbHost = "104.236.199.139";
 $dbUser = "root";
 $dbPass = "J^mpStrt";
 $dbDatabase = "takeyout";
