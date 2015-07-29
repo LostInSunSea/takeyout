@@ -36,8 +36,8 @@ if ($conn->connect_error)
     die("Connection failed: " . $conn->connect_error);
 }
 
-echo "result is" . $result;
-echo "decoded is" . $decoded;
+echo "The result is " . $result;
+echo "The decoded is " . $decoded;
 
 $id = $decoded['id'];
 $name = $decoded['formattedName'];
