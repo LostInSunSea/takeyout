@@ -69,7 +69,29 @@ if (isset($decoded['industry']))
 {
     $industry = $decoded['industry'];
 }
-$sql = "INSERT INTO user (id, name, headline, industry, city, country, picThumbnail, picFull) VALUES ('$id', '$name', '$headline', '$industry', NULL, NULL, '$picThumbnail', '$picFull')";
+if (isset($decoded['positions']))
+{
+    $positions = $decoded['positions'];
+    if ($positions['_total'] > 0)
+    {
+        $values = $positions['values'];
+        $curPosition = $values[0];
+        $lastJobtitle = $curPosition['title'];
+        $lastJobSummary = $curPosition['summary'];
+        $company = $curPosition['company'];
+        $lastCompany = $company['name'];
+        $startDate = $curPosition['startDate'];
+        $month = $startDate['month'];
+        $year = $startDate['year'];
+    }
+}
+if (isset($decoded['summary']))
+{
+    $summary = $decoded['summary'];
+}
+
+$sql = "INSERT INTO user (id, name, headline, industry, city, country, picThumbnail, picFull, lastJobTitle, lastCompany, lastJobStartDate, lastJobSummary, summary)
+        VALUES ('$id', '$name', '$headline', '$industry', NULL, NULL, '$picThumbnail', '$picFull', '$lastJobtitle', '$lastCompany',  STR_TO_DATE('$year-$month', '%Y-%m'), '$lastJobSummary', '$summary')";
 if ($conn->query($sql) === TRUE)
 {
     //header("Location: ../chatwindow.html");
