@@ -4,7 +4,7 @@ session_start();
 $ID = htmlspecialchars($_GET['conversationID']);
 $index = htmlspecialchars($_GET['index']);
 
-$dbHost = "http://kawaiikrew.net";
+$dbHost = 'localhost';
 $dbUser = "root";
 $dbPass = "J^mpStrt";
 $dbDatabase = "takeyout";

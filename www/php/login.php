@@ -12,10 +12,10 @@
     $_SESSION["ID"] = $id;
     $_SESSION["PicURL"] = $picture;
 
-    $dbHost = "http://kawaiikrew.net";
+    $dbHost = 'localhost';
     $dbUser = "root";
     $dbPass = "J^mpStrt";
-    $dbDatabase = "test";
+    $dbDatabase = "takeyout";
 
     $conn = new mysqli($dbHost, $dbUser, $dbPass, $dbDatabase);
     if ($conn->connect_error)

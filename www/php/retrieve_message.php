@@ -4,7 +4,7 @@
     $ID = htmlspecialchars($_GET['conversationID']);
     $limit = htmlspecialchars($_GET['limit']);
 
-    $dbHost = "http://kawaiikrew.net";
+    $dbHost = 'localhost';
     $dbUser = "root";
     $dbPass = "J^mpStrt";
     $dbDatabase = "takeyout";
