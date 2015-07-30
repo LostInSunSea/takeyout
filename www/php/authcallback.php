@@ -51,8 +51,25 @@ if (isset($decoded['formattedName']))
 {
     $name = $decoded['formattedName'];
 }
-
-$sql = "INSERT INTO user (id, name) VALUES ('$id', '$name')";
+if (isset($decoded['headline']))
+{
+    $headline = $decoded['headline'];
+}
+if (isset($decoded['pictureUrl']))
+{
+    $picThumbnail = $decoded['pictureUrl'];
+}
+if (isset($decoded['pictureUrls']))
+{
+    $urls = $decoded['pictureUrls'];
+    $values = $urls['values'];
+    $picFull = $values[0];
+}
+if (isset($decoded['industry']))
+{
+    $industry = $decoded['industry'];
+}
+$sql = "INSERT INTO user (id, name, headline, industry, city, country, picThumbnail) VALUES ('$id', '$name', '$headline', '$industry', NULL, NULL, '$picThumbnail')";
 if ($conn->query($sql) === TRUE)
 {
     //header("Location: ../chatwindow.html");
