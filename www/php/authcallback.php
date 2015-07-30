@@ -69,7 +69,7 @@ if (isset($decoded['industry']))
 {
     $industry = $decoded['industry'];
 }
-$sql = "INSERT INTO user (id, name, headline, industry, city, country, picThumbnail) VALUES ('$id', '$name', '$headline', '$industry', NULL, NULL, '$picThumbnail')";
+$sql = "INSERT INTO user (id, name, headline, industry, city, country, picThumbnail, picFull) VALUES ('$id', '$name', '$headline', '$industry', NULL, NULL, '$picThumbnail', '$picFull')";
 if ($conn->query($sql) === TRUE)
 {
     //header("Location: ../chatwindow.html");
