@@ -43,8 +43,6 @@ if ($conn->connect_error)
     die("Connection failed: " . $conn->connect_error);
 }
 
-echo $result;
-
 if (isset($decoded['id']))
 {
     $id = $decoded['id'];
@@ -91,18 +89,29 @@ if (isset($decoded['summary']))
 {
     $summary = $decoded['summary'];
 }
-
-$sql = "INSERT INTO user (id, name, headline, industry, city, country, picThumbnail, picFull, lastJobTitle, lastCompany, lastJobStartDate, lastJobSummary, summary)
+$sql = "SELECT * FROM user WHERE id = '$id'";
+if ($result=mysqli_query($conn,$sql))
+{
+    //If the user already exists, go to homepage
+    if (mysqli_num_rows($result))
+    {
+        header( 'Location: ../chatwindow.html' );
+    }
+    else
+    {
+        $sql = "INSERT INTO user (id, name, headline, industry, city, country, picThumbnail, picFull, lastJobTitle, lastCompany, lastJobStartDate, lastJobSummary, summary)
         VALUES ('$id', '$name', '$headline', '$industry', NULL, NULL, '$picThumbnail', '$picFull', '$lastJobtitle', '$lastCompany',  STR_TO_DATE('$year-$month', '%Y-%m'), '$lastJobSummary', '$summary')";
-if ($conn->query($sql) === TRUE)
-{
-    $_SESSION["name"] = $name;
-    $_SESSION["id"] = $id;
-    $_SESSION["picUrl"] = $picture;
-    //header("Location: ../chatwindow.html");
-} else
-{
-    echo "Error: " . $sql . "<br>" . $conn->error;
+        if ($conn->query($sql) === TRUE)
+        {
+            $_SESSION["name"] = $name;
+            $_SESSION["id"] = $id;
+            $_SESSION["picUrl"] = $picture;
+            header("Location: ../chatwindow.html");
+        } else
+        {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+    }
 }
 
 $conn->close();
