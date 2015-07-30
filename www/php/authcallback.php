@@ -41,13 +41,21 @@ if ($conn->connect_error)
     die("Connection failed: " . $conn->connect_error);
 }
 
-$id = $decoded['id'];
-$name = $decoded['formattedName'];
+echo $decoded;
+
+if (isset($decoded['id']))
+{
+    $id = $decoded['id'];
+}
+if (isset($decoded['formattedName']))
+{
+    $name = $decoded['formattedName'];
+}
 
 $sql = "INSERT INTO user (id, name) VALUES ('$id', '$name')";
 if ($conn->query($sql) === TRUE)
 {
-    header("Location: ../chatwindow.html");
+    //header("Location: ../chatwindow.html");
 } else
 {
     echo "Error: " . $sql . "<br>" . $conn->error;
