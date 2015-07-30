@@ -8,9 +8,9 @@
     $picture = htmlspecialchars($_POST['Picture']);
     $industry = htmlspecialchars($_POST['Industry']);
 
-    $_SESSION["Name"] = $name;
-    $_SESSION["ID"] = $id;
-    $_SESSION["PicURL"] = $picture;
+    $_SESSION["name"] = $name;
+    $_SESSION["id"] = $id;
+    $_SESSION["picUrl"] = $picture;
 
     $dbHost = 'localhost';
     $dbUser = "root";

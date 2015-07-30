@@ -2,7 +2,7 @@
 
     session_start();
 
-    if (!isset($_SESSION['ID']))
+    if (!isset($_SESSION['id']))
     {
         echo "Error: Not logged in!";
     }
@@ -10,7 +10,7 @@
     $tagLine = $_POST['Tagline'];
     $bio = $_POST['Bio'];
 
-    $id = $_SESSION["ID"];
+    $id = $_SESSION["id"];
 
     $dbHost = "http://kawaiikrew.net";
     $dbUser = "root";

@@ -2,7 +2,7 @@
 
     session_start();
 
-    $id = $_SESSION["ID"];
+    $id = $_SESSION["id"];
 
     $dbHost = "http://kawaiikrew.net";
     $dbUser = "root";

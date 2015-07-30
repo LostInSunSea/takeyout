@@ -3,9 +3,9 @@
     session_start();
 
     $user = array(
-        'ID' => $_SESSION['ID'],
-        'Name' => $_SESSION['Name'],
-        'PicURL' => $_SESSION['PicURL'],
+        'ID' => $_SESSION['id'],
+        'Name' => $_SESSION['name'],
+        'PicURL' => $_SESSION['picUrl'],
     );
 
     $jsonstring = json_encode($user);

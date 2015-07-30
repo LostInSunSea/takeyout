@@ -95,6 +95,9 @@ if ($result=mysqli_query($conn,$sql))
     //If the user already exists, go to homepage
     if (mysqli_num_rows($result))
     {
+        $_SESSION["name"] = $name;
+        $_SESSION["id"] = $id;
+        $_SESSION["picUrl"] = $picture;
         header( 'Location: ../chatwindow.html' );
     }
     else

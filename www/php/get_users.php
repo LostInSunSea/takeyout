@@ -4,7 +4,7 @@
     //TODO: Implement rejected database to not show people the user has already rejected
 
     session_start();
-    $myId = $_SESSION['ID'];
+    $myId = $_SESSION['id'];
 
     $dbHost = 'localhost';
     $dbUser = "root";
