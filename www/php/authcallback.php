@@ -1,4 +1,6 @@
 <?php
+ini_set('session.cookie_lifetime', 60 * 60 * 24 * 7);  // 7 day cookie lifetime
+session_start();
 
 parse_str($_SERVER['QUERY_STRING']);
 
@@ -94,6 +96,9 @@ $sql = "INSERT INTO user (id, name, headline, industry, city, country, picThumbn
         VALUES ('$id', '$name', '$headline', '$industry', NULL, NULL, '$picThumbnail', '$picFull', '$lastJobtitle', '$lastCompany',  STR_TO_DATE('$year-$month', '%Y-%m'), '$lastJobSummary', '$summary')";
 if ($conn->query($sql) === TRUE)
 {
+    $_SESSION["name"] = $name;
+    $_SESSION["id"] = $id;
+    $_SESSION["picUrl"] = $picture;
     //header("Location: ../chatwindow.html");
 } else
 {
