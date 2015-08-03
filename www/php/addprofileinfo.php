@@ -23,7 +23,7 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "UPDATE User SET bio = '$bio', tagline = '$tagLine' WHERE id = '$id'";
+    $sql = "UPDATE user SET bio = '$bio', tagline = '$tagLine' WHERE id = '$id'";
 
     if (mysqli_query($conn, $sql))
     {

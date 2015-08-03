@@ -23,7 +23,7 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT * FROM User WHERE id = '$id'";
+    $sql = "SELECT * FROM user WHERE id = '$id'";
     if ($result=mysqli_query($conn,$sql))
     {
         //If the user already exists, go to homepage
@@ -33,7 +33,7 @@
         }
         else
         {
-            $sql = "INSERT INTO User (id, job, name, location, pictureurl, industry)
+            $sql = "INSERT INTO user (id, job, name, location, pictureurl, industry)
         VALUES ('$id', '$job', '$name', '$location', '$picture', '$industry')";
 
             if ($conn->query($sql) === TRUE)

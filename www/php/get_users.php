@@ -17,7 +17,7 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT * FROM User WHERE id <> '$myId'";
+    $sql = "SELECT * FROM user WHERE id <> '$myId'";
 
     if ($result = mysqli_query($conn, $sql))
     {
