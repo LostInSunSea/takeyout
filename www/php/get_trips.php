@@ -53,7 +53,7 @@
 
     //Get the other trips belonging to the user
 
-    $sql = "SELECT * FROM trips WHERE owner = '$id' AND active = 1";
+    $sql = "SELECT * FROM trip WHERE owner = '$id' AND active = 1";
     if ($tripResult=mysqli_query($conn,$sql))
     {
         while($row = mysqli_fetch_array ($tripResult))
