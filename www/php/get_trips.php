@@ -27,7 +27,9 @@
     $sql = "SELECT * FROM user WHERE id = '$id'";
     if ($hometownResult=mysqli_query($conn,$sql))
     {
-        if (mysqli_num_rows($result) == 1)
+        $countRow = $hometownResult->fetch_assoc();
+        $num = $countRow['COUNT(*)'];
+        if ($num == 1)
         {
             while($row = mysqli_fetch_array ($hometownResult))
             {
