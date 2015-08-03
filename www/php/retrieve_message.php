@@ -22,11 +22,11 @@
     $num = $countRow['COUNT(*)'];
     if ($num < $limit)
     {
-        $sql = "SELECT * FROM (SELECT * FROM reply WHERE conversation_id = '$ID' ORDER BY id DESC LIMIT $num) sub ORDER BY id ASC";
+        $sql = "SELECT * FROM (SELECT * FROM reply WHERE conversationId = '$ID' ORDER BY id DESC LIMIT $num) sub ORDER BY id ASC";
     }
     else
     {
-        $sql = "SELECT * FROM (SELECT * FROM reply WHERE conversation_id = '$ID' ORDER BY id DESC LIMIT $limit) sub ORDER BY id ASC";
+        $sql = "SELECT * FROM (SELECT * FROM reply WHERE conversationId = '$ID' ORDER BY id DESC LIMIT $limit) sub ORDER BY id ASC";
     }
     if ($result2=mysqli_query($conn,$sql))
     {
