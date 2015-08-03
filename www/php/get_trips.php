@@ -1,39 +1,78 @@
 <?php
 
-    //session_start();
+    //TODO: Create background image database
+
+    session_start();
+    if (!isset($_SESSION['id']))
+    {
+        echo "Error: Not logged in!";
+    }
+
+    $id = $_SESSION["id"];
+
+    $dbHost = "localhost";
+    $dbUser = "root";
+    $dbPass = "J^mpStrt";
+    $dbDatabase = "takeyout";
+
+    $conn = new mysqli($dbHost, $dbUser, $dbPass, $dbDatabase);
+    if ($conn->connect_error)
+    {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
     $json = array();
-    $bus = array(
-        'city' => 'Menlo Park',
-        'country' => 'us',
-        'startDate' => null,
-        'endDate' => null,
-        'backgroundImage' => 'http://sf.streetsblog.org/wp-content/uploads/sites/3/2014/11/San_Bruno_El_Camino_and_San_Mateo_Ave.png'
-    );
-    array_push($json, $bus);
-    $bus = array(
-        'city' => 'New York',
-        'country' => 'us',
-        'startDate' => '2015-8-3',
-        'endDate' => '2015-8-12',
-        'backgroundImage' => 'http://media.timeout.com/images/101705313/image.jpg'
-    );
-    array_push($json, $bus);
-    $bus = array(
-        'city' => 'Beijing',
-        'country' => 'cn',
-        'startDate' => '2015-8-17',
-        'endDate' => '2015-9-3',
-        'backgroundImage' => 'http://www.echinaexpat.com/Portals/0/eChinaExpat/China%20Travel/beijingcity.jpg'
-    );
-    array_push($json, $bus);
-    $bus = array(
-        'city' => 'Tokyo',
-        'country' => 'jp',
-        'startDate' => '2015-9-10',
-        'endDate' => '2015-9-13',
-        'backgroundImage' => 'http://www.telegraph.co.uk/incoming/article115762.ece/ALTERNATES/w460/tokyo.jpg'
-    );
-    array_push($json, $bus);
+
+    //Get hometown, have startDate and endDate as null
+    $sql = "SELECT * FROM user WHERE id = '$id'";
+    if ($hometownResult=mysqli_query($conn,$sql))
+    {
+        if (mysqli_num_rows($result) == 1)
+        {
+            while($row = mysqli_fetch_array ($hometownResult))
+            {
+                $bus = array(
+                    'city' => $row['city'],
+                    'country' => $row['country'],
+                    'startDate' => null,
+                    'endDate' => null,
+                    'backgroundImage' => null
+                );
+                array_push($json, $bus);
+            }
+        }
+        else
+        {
+            echo "Error: More than 1 user retrieved";
+        }
+    }
+    else
+    {
+        echo "Error updating record: " . mysqli_error($conn);
+    }
+
+    //Get the other trips belonging to the user
+
+    $sql = "SELECT * FROM trips WHERE owner = '$id' AND active = 1";
+    if ($tripResult=mysqli_query($conn,$sql))
+    {
+        while($row = mysqli_fetch_array ($tripResult))
+        {
+            $bus = array(
+                'city' => $row['city'],
+                'country' => $row['country'],
+                'startDate' => $row['startDate'],
+                'endDate' => $row['endDate'],
+                'backgroundImage' => null
+            );
+            array_push($json, $bus);
+        }
+    }
+    else
+    {
+        echo "Error updating record: " . mysqli_error($conn);
+    }
+
     $jsonstring = json_encode($json);
     echo $jsonstring;
 
