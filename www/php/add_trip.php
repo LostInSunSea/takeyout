@@ -41,7 +41,7 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT * FROM Trip WHERE owner = '$id'";
+    $sql = "SELECT * FROM trip WHERE owner = '$id'";
     if ($result = mysqli_query($conn, $sql))
     {
         if (mysqli_num_rows($result))
@@ -57,7 +57,7 @@
         }
     }
 
-    $sql = "INSERT INTO Trip (id, country, city, owner, start, end)
+    $sql = "INSERT INTO trip (id, country, city, owner, start, end)
             VALUES (NULL, '$country', '$city', '$id', '$start', '$end')";
 
     if (mysqli_query($conn, $sql))
