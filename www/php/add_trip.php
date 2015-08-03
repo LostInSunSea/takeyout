@@ -57,8 +57,8 @@
         }
     }
 
-    $sql = "INSERT INTO trip (id, country, city, owner, start, end)
-            VALUES (NULL, '$country', '$city', '$id', '$start', '$end')";
+$sql = "INSERT INTO trip (id, startDate, endDate, city, country, owner)
+                VALUES (NULL, '$start', '$end', '$city', '$country', '$id')";
 
     if (mysqli_query($conn, $sql))
     {
