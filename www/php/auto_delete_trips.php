@@ -25,7 +25,7 @@
     $curDate = date("Y-m-d");
 
 
-    $sql = "UPDATE trip SET active = 0 WHERE endDate < curDate";
+    $sql = "UPDATE trip SET active = 0 WHERE endDate < $curDate";
     if (mysqli_query($conn, $sql))
     {
         echo "Success";
