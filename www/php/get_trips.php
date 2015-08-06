@@ -31,6 +31,7 @@
         //$num = $countRow['COUNT(*)'];
         //if ($num == 1)
         //{
+        //TODO: Uncomment this after more users in db
             while($row = mysqli_fetch_array ($hometownResult))
             {
                 $bus = array(
