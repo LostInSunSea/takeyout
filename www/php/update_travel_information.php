@@ -2,6 +2,11 @@
 
     session_start();
 
+if (!isset($_SESSION['id']))
+{
+    exit ("Error: Not logged in!");
+}
+
     $id = $_SESSION["id"];
 
     $dbHost = "localhost";

@@ -4,6 +4,12 @@
     //TODO: Implement rejected database to not show people the user has already rejected
 
     session_start();
+
+    if (!isset($_SESSION['id']))
+    {
+        exit ("Error: Not logged in!");
+    }
+
     $myId = $_SESSION['id'];
 
     $dbHost = 'localhost';

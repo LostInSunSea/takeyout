@@ -4,7 +4,7 @@
 
     if (!isset($_SESSION['id']))
     {
-        echo "Error: Not logged in!";
+        exit ("Error: Not logged in!");
     }
 
     $tagLine = $_POST['Tagline'];
