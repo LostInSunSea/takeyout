@@ -38,7 +38,7 @@
                 $bus = array(
                     'id' => $row['id'],
                     'message' => $row['message'],
-                    'from' => $row['from_user'],
+                    'from' => $row['fromUser'],
                 );
                 array_push($json, $bus);
             }

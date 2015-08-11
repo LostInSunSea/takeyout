@@ -22,8 +22,10 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "INSERT INTO reply (id, message, from_user, to_user, ip, time, conversation_id)
-            VALUES (NULL, '$message', '$from', '$to', NULL, NULL, '$convoID')";
+//TODO: Add time
+
+    $sql = "INSERT INTO reply (id, message, fromUser, toUser, time, conversation_id)
+            VALUES (NULL, '$message', '$from', '$to', NULL, '$convoID')";
 
     if ($conn->query($sql) === TRUE)
     {
