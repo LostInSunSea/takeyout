@@ -34,13 +34,13 @@
             {
                 $bus = array(
                     'id' => $row['id'],
-                    'job' => $row['job'],
                     'name' => $row['name'],
-                    'location' => $row['location'],
-                    'pictureurl' => $row['pictureurl'],
-                    'industry' => $row['industry'],
-                    'tagline' => $row['tagline'],
-                    'bio' => $row['bio']
+                    'headline' => $row['headline'],
+                    'city' => $row['city'],
+                    'country' => $row['country'],
+                    'numPosReview' => $row['numPosReview'],
+                    'pic' => $row['picFull'],
+                    'tagline' => $row['tagline']
                 );
                 array_push($json, $bus);
             }
