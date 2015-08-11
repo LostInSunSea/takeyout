@@ -39,8 +39,8 @@
                     'city' => $row['city'],
                     'country' => $row['country'],
                     'numPosReview' => $row['numPosReview'],
+                    'tagline' => $row['tagline'],
                     'pic' => $row['picFull'],
-                    'tagline' => $row['tagline']
                 );
                 array_push($json, $bus);
             }
