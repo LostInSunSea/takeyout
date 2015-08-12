@@ -34,7 +34,7 @@ if ($result = mysqli_query($conn, $sql))
     if($result->num_rows != 0)
     {
         //echo "found";
-        while($row = mysqli_fetch_array ($hometownResult))
+        while($row = mysqli_fetch_array ($result))
         {
             echo $row['url'];
         }
