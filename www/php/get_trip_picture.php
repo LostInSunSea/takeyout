@@ -41,7 +41,21 @@ if ($result = mysqli_query($conn, $sql))
     }
     else
     {
-        echo "not found";
+        $sql2 = "SELECT * FROM locations WHERE name = '$country' AND type = 'country'";
+        if ($result2 = mysqli_query($conn, $sql))
+        {
+            if ($result2->num_rows != 0)
+            {
+                while($row = mysqli_fetch_array ($result2))
+                {
+                    echo $row['url'];
+                }
+            }
+            else
+            {
+                echo "not found, return some kind of default picture for a trip in general";
+            }
+        }
     }
 }
 
