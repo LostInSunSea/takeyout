@@ -9,8 +9,13 @@
 <script type="text/javascript">
     $.get("http://kawaiikrew.net/www/php/get_trip_picture.php",{location:"New York, USA"}, function(data)
     {
-        alert(data);
-    })
+        alert("First search" + data);
+    });
+
+    $.get("http://kawaiikrew.net/www/php/get_trip_picture.php",{location:"Menlo Park, USA"}, function(data)
+    {
+        alert("Second search" + data);
+    });
 </script>
 </body>
 </html>
