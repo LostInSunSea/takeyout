@@ -26,17 +26,22 @@ if ($conn->connect_error)
     die("Connection failed: " . $conn->connect_error);
 }
 
+$json = array();
 $sql = "SELECT * FROM locations WHERE name = '$city' AND type = 'city'";
 
 if ($result = mysqli_query($conn, $sql))
 {
-    if($result->num_rows == 0)
+    if($result->num_rows != 0)
     {
-        echo "not found";
+        //echo "found";
+        while($row = mysqli_fetch_array ($hometownResult))
+        {
+            echo $row['url'];
+        }
     }
     else
     {
-        echo "found";
+        echo "not found";
     }
 }
 
