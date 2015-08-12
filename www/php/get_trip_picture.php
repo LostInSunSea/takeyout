@@ -30,12 +30,14 @@ $sql = "SELECT * FROM locations WHERE name = '$city' AND type = 'city'";
 
 if ($result = mysqli_query($conn, $sql))
 {
-    echo $result->num_rows;
-    if($result->num_rows === 0)
+    if($result->num_rows == 0)
     {
         echo "not found";
     }
-    echo "found";
+    else
+    {
+        echo "found";
+    }
 }
 
 ?>
