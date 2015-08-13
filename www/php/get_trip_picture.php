@@ -29,6 +29,8 @@ if ($conn->connect_error)
 $json = array();
 $sql = "SELECT * FROM locations WHERE name = '$city' AND type = 'city'";
 
+
+//TODO: test for country later
 if ($result = mysqli_query($conn, $sql))
 {
     if($result->num_rows != 0)
@@ -42,7 +44,7 @@ if ($result = mysqli_query($conn, $sql))
     else
     {
         $sql2 = "SELECT * FROM locations WHERE name = '$country' AND type = 'country'";
-        if ($result2 = mysqli_query($conn, $sql))
+        if ($result2 = mysqli_query($conn, $sql2))
         {
             if ($result2->num_rows != 0)
             {
