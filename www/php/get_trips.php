@@ -49,8 +49,8 @@
                     CURLOPT_USERAGENT => 'cURL Request'
                 ));
 
-                echo 'http://kawaiikrew.net/www/php/get_trip_picture.php?location=' . $row['city'] . ', ' . $row['country'];
                 $resp = curl_exec($curl);
+                echo $resp;
                 $bus['backgroundImage'] = $resp;
                 array_push($json, $bus);
             }
