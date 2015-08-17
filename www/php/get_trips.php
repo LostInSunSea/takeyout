@@ -10,6 +10,8 @@
 
     $id = $_SESSION["id"];
 
+    $ch = curl_init();
+
     $dbHost = "localhost";
     $dbUser = "root";
     $dbPass = "J^mpStrt";
@@ -41,6 +43,13 @@
                     'endDate' => null,
                     'backgroundImage' => null
                 );
+                curl_setopt_array($curl, array(
+                    CURLOPT_RETURNTRANSFER => 1,
+                    CURLOPT_URL => 'http://kawaiikrew.net/www/php/get_trip_picture.php?location=' . $row['city'] . ', ' . $row['country'],
+                    CURLOPT_USERAGENT => 'cURL Request'
+                ));
+                $resp = curl_exec($curl);
+                $bus['backgroundImage'] = $resp;
                 array_push($json, $bus);
             }
         //}
