@@ -50,7 +50,6 @@
                 ));
 
                 $resp = curl_exec($ch);
-                echo $resp;
                 $bus['backgroundImage'] = $resp;
                 array_push($json, $bus);
             }
@@ -79,6 +78,15 @@
                 'endDate' => $row['endDate'],
                 'backgroundImage' => null
             );
+
+            curl_setopt_array($ch, array(
+                CURLOPT_RETURNTRANSFER => 1,
+                CURLOPT_URL => 'http://kawaiikrew.net/www/php/get_trip_picture.php?location=' . $row['city'] . ',%20' . $row['country'],
+                CURLOPT_USERAGENT => 'cURL Request'
+            ));
+
+            $resp = curl_exec($ch);
+            $bus['backgroundImage'] = $resp;
             array_push($json, $bus);
         }
     }
@@ -86,6 +94,9 @@
     {
         echo "Error updating record: " . mysqli_error($conn);
     }
+
+
+    curl_close($ch);
 
     $jsonstring = json_encode($json);
     echo $jsonstring;
