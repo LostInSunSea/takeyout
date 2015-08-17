@@ -88,6 +88,8 @@
             echo 'http://kawaiikrew.net/www/php/get_trip_picture.php?location=' . $row['city'] . ',%20' . $row['country'];
 
             $resp = curl_exec($ch);
+
+            echo $resp;
             $bus['backgroundImage'] = $resp;
             array_push($json, $bus);
         }
