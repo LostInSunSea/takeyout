@@ -45,11 +45,10 @@
                 );
                 curl_setopt_array($ch, array(
                     CURLOPT_RETURNTRANSFER => 1,
-                    CURLOPT_URL => 'http://kawaiikrew.net/www/php/get_trip_picture.php?location=' . $row['city'] . ', ' . $row['country'],
+                    CURLOPT_URL => 'http://kawaiikrew.net/www/php/get_trip_picture.php?location=' . $row['city'] . ',%20' . $row['country'],
                     CURLOPT_USERAGENT => 'cURL Request'
                 ));
 
-                $resp = curl_exec($ch);
                 echo $resp;
                 $bus['backgroundImage'] = $resp;
                 array_push($json, $bus);
