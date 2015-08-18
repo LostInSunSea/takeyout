@@ -1,5 +1,5 @@
 <?php
-
+    header('Access-Control-Allow-Origin: *');
     //TODO: Create background image database
 
     session_start();
