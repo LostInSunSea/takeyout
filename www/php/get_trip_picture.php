@@ -55,7 +55,7 @@ if ($result = mysqli_query($conn, $sql))
             }
             else
             {
-                echo "not found, return some kind of default picture for a trip in general";
+                echo 'http://kawaiikrew.net/www/img/GenericCity.png';
             }
         }
     }
