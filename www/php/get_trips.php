@@ -1,14 +1,16 @@
 <?php
     header('Access-Control-Allow-Origin: *');
-    //TODO: Create background image database
 
     session_start();
-    if (!isset($_SESSION['id']))
+    //TODO: uncomment this after testing is done
+    /*if (!isset($_SESSION['id']))
     {
         exit ("Error: Not logged in!");
     }
 
-    $id = $_SESSION["id"];
+    $id = $_SESSION["id"];*/
+
+    $id = 'N-NcRMZupE';
 
     $ch = curl_init();
 
