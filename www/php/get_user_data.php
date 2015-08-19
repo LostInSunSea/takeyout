@@ -1,4 +1,5 @@
 <?php
+    header('Access-Control-Allow-Origin: *');
 
     session_start();
     //TODO: uncomment the login check and also decide if I want to use session tokens or do SQL later on
