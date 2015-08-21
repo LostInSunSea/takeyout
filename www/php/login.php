@@ -1,10 +1,6 @@
 <?php
     ini_set('session.cookie_lifetime', 60 * 60 * 24 * 7);  // 7 day cookie lifetime
     session_start();
-    $result = htmlspecialchars($_POST['data']);
-    echo "result is " . $result;
-    $decoded = json_decode($result, true);
-    echo "decoded is " . $decoded;
 
     $dbHost = 'localhost';
     $dbUser = "root";
@@ -17,35 +13,35 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    if (isset($decoded['id']))
+    if (isset($_POST['id']))
     {
-        $id = $decoded['id'];
+        $id = $_POST['id'];
     }
-    if (isset($decoded['formattedName']))
+    if (isset($_POST['formattedName']))
     {
-        $name = $decoded['formattedName'];
+        $name = $_POST['formattedName'];
     }
-    if (isset($decoded['headline']))
+    if (isset($_POST['headline']))
     {
-        $headline = $decoded['headline'];
+        $headline = $_POST['headline'];
     }
-    if (isset($decoded['pictureUrl']))
+    if (isset($_POST['pictureUrl']))
     {
-        $picThumbnail = $decoded['pictureUrl'];
+        $picThumbnail = $_POST['pictureUrl'];
     }
-    if (isset($decoded['pictureUrls']))
+    if (isset($_POST['pictureUrls']))
     {
-        $urls = $decoded['pictureUrls'];
+        $urls = $_POST['pictureUrls'];
         $values = $urls['values'];
         $picFull = $values[0];
     }
-    if (isset($decoded['industry']))
+    if (isset($_POST['industry']))
     {
-        $industry = $decoded['industry'];
+        $industry = $_POST['industry'];
     }
-    if (isset($decoded['positions']))
+    if (isset($_POST['positions']))
     {
-        $positions = $decoded['positions'];
+        $positions = $_POST['positions'];
         if ($positions['_total'] > 0)
         {
             $values = $positions['values'];
@@ -61,7 +57,7 @@
     }
     if (isset($decoded['summary']))
     {
-        $summary = $decoded['summary'];
+        $summary = $_POST['summary'];
     }
     $sql = "SELECT * FROM user WHERE id = '$id'";
     if ($result=mysqli_query($conn,$sql))
