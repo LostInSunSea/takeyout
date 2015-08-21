@@ -2,7 +2,9 @@
     ini_set('session.cookie_lifetime', 60 * 60 * 24 * 7);  // 7 day cookie lifetime
     session_start();
     $result = htmlspecialchars($_POST['result']);
+    echo "result is " . $result;
     $decoded = json_decode($result, true);
+    echo "decoded is " . $decoded;
 
     $dbHost = 'localhost';
     $dbUser = "root";
