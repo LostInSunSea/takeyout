@@ -14,6 +14,8 @@
 
     $ch = curl_init();
 
+    //TODO: call auto_delete_trips.php here
+
     $dbHost = "localhost";
     $dbUser = "root";
     $dbPass = "J^mpStrt";
