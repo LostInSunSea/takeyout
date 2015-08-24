@@ -55,7 +55,7 @@
             $year = $startDate['year'];
         }
     }
-    if (isset($decoded['summary']))
+    if (isset($_POST['summary']))
     {
         $summary = $_POST['summary'];
     }
