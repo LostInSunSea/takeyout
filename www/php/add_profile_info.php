@@ -9,12 +9,12 @@
         exit ("Error: Not logged in!");
     }*/
 
-    $bio = $_POST['bio'];
-    $city = $_POST['city'];
-    $country = $_POST['country'];
-    $preferences = $_POST['preferences'];
-    $languages = $_POST['languages'];
-    $favoriteFoods = $_POST['favoriteFoods'];
+    $bio = htmlspecialchars($_POST['bio']);
+    $city = htmlspecialchars($_POST['city']);
+    $country = htmlspecialchars($_POST['country']);
+    $preferences = htmlspecialchars($_POST['preferences']);
+    $languages = htmlspecialchars($_POST['languages']);
+    $favoriteFoods = htmlspecialchars($_POST['favoriteFoods']);
 
     $id = 'A0BwIAdiU9';
     //$id = $_SESSION["id"];
