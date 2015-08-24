@@ -68,7 +68,7 @@
             $_SESSION["name"] = $name;
             $_SESSION["id"] = $id;
             $_SESSION["picUrl"] = $picture;
-            echo "User found, redirecting to connect";
+            echo "connect";
         }
         else
         {
@@ -79,7 +79,7 @@
                 $_SESSION["name"] = $name;
                 $_SESSION["id"] = $id;
                 $_SESSION["picUrl"] = $picture;
-                echo "New user, creating new entry in db and redirecting to setup";
+                echo "setup";
             } else
             {
                 echo "Error: " . $sql . "<br>" . $conn->error;
