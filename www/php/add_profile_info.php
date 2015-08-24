@@ -3,21 +3,19 @@
     header('Access-Control-Allow-Origin: *');
     session_start();
 
-    //TODO: uncomment later
-    /*if (!isset($_SESSION['id']))
+    if (!isset($_SESSION['id']))
     {
         exit ("Error: Not logged in!");
-    }*/
+    }
 
-    $bio = htmlspecialchars($_POST['bio']);
-    $city = htmlspecialchars($_POST['city']);
-    $country = htmlspecialchars($_POST['country']);
-    $preferences = htmlspecialchars($_POST['preferences']);
-    $languages = htmlspecialchars($_POST['languages']);
-    $favoriteFoods = htmlspecialchars($_POST['favoriteFoods']);
+    $bio = $_POST['bio'];
+    $city = $_POST['city'];
+    $country = $_POST['country'];
+    $preferences = $_POST['preferences'];
+    $languages = $_POST['languages'];
+    $favoriteFoods = $_POST['favoriteFoods'];
 
-    $id = 'A0BwIAdiU9';
-    //$id = $_SESSION["id"];
+    $id = $_SESSION["id"];
 
     $dbHost = "localhost";
     $dbUser = "root";
