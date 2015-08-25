@@ -8,11 +8,7 @@
         exit ("Error: Not logged in!");
     }
 
-    $user = array(
-        'ID' => $_SESSION['id'],
-        'Name' => $_SESSION['name'],
-        'PicURL' => $_SESSION['picUrl'],
-    );
+    $id = $_SESSION['id'];
 
     $dbHost = "localhost";
     $dbUser = "root";
