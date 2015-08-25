@@ -12,6 +12,9 @@
     $city = htmlspecialchars($_GET['city']);
     $country = htmlspecialchars($_GET['country']);
 
+    echo $city;
+    echo $country;
+
     $dbHost = "localhost";
     $dbUser = "root";
     $dbPass = "J^mpStrt";
