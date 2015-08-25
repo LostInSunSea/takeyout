@@ -1,19 +1,16 @@
 <?php
 
     session_start();
-    /*if (!isset($_SESSION['id']))
+    if (!isset($_SESSION['id']))
     {
         exit ("Error: Not logged in!");
     }
-    $id = $_SESSION["id"];*/
+    $id = $_SESSION["id"];
 
-    $id = 'A0BwIAdiU9';
+    //$id = 'A0BwIAdiU9';
 
     $city = htmlspecialchars($_GET['city']);
     $country = htmlspecialchars($_GET['country']);
-
-    echo $city;
-    echo $country;
 
     $dbHost = "localhost";
     $dbUser = "root";
