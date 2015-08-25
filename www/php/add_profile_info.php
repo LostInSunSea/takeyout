@@ -32,7 +32,7 @@
 
     if (mysqli_query($conn, $sql))
     {
-        echo $sql;
+        echo "Success";
     }
     else
     {
