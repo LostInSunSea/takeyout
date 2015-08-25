@@ -2,15 +2,13 @@
     header('Access-Control-Allow-Origin: *');
 
     session_start();
-    //TODO: uncomment this after testing is done
-    /*if (!isset($_SESSION['id']))
+    if (!isset($_SESSION['id']))
     {
         exit ("Error: Not logged in!");
     }
 
-    $id = $_SESSION["id"];*/
+    $id = $_SESSION["id"];
 
-    $id = 'N-NcRMZupE';
 
     $ch = curl_init();
 
