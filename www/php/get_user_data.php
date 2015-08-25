@@ -32,7 +32,9 @@
                 'city' => $row['city'],
                 'country' => $row['country'],
                 'picFull' => $row['picFull'],
-                'bio' => $row['bio']
+                'bio' => $row['bio'],
+                'languages' => $row['languages'],
+                'favoriteFoods' => $row['favoriteFoods']
             );
         }
     }
