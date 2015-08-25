@@ -25,7 +25,7 @@
 
     $json = array();
 
-    $sql = "SELECT * FROM user WHERE id <> '$id' AND city = '$city' AND country = '$country'";
+    $sql = "SELECT * FROM user WHERE id <> '$id' AND city = '$city' AND country = '$country' LIMIT 10";
 
     if($result=mysqli_query($conn,$sql))
     {
