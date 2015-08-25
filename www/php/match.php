@@ -27,7 +27,7 @@
 
     $json = array();
 
-    if (type == "Travel")
+    if ($type == "Travel")
     {
         $sql = "SELECT * FROM user WHERE id <> '$id' AND city = '$city' AND country = '$country' LIMIT 10";
     }
