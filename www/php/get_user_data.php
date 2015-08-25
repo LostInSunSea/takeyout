@@ -3,7 +3,7 @@
 
     session_start();
     //TODO: uncomment the login check and also decide if I want to use session tokens or do SQL later on
-    /*if (!isset($_SESSION['id']))
+    if (!isset($_SESSION['id']))
     {
         exit ("Error: Not logged in!");
     }
@@ -12,7 +12,7 @@
         'ID' => $_SESSION['id'],
         'Name' => $_SESSION['name'],
         'PicURL' => $_SESSION['picUrl'],
-    );*/
+    );
 
     //TODO:remove this later
     $id = 'N-NcRMZupE';
