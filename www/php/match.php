@@ -32,14 +32,14 @@
         while($row = mysqli_fetch_array ($result))
         {
             $bus = array(
-                'id' => $row['id'],
                 'name' => $row['name'],
                 'headline' => $row['headline'],
                 'city' => $row['city'],
                 'country' => $row['country'],
-                'numPosReview' => $row['numPosReview'],
-                'tagline' => $row['tagline'],
-                'pic' => $row['picFull'],
+                'picFull' => $row['picFull'],
+                'bio' => $row['bio'],
+                'languages' => $row['languages'],
+                'favoriteFoods' => $row['favoriteFoods']
             );
             array_push($json, $bus);
         }
