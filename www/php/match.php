@@ -34,7 +34,7 @@
     else
     {
         //TODO: Select users who have a trip here on overlapping days
-        exit ('TODO');
+        exit ('[]');
     }
 
     if($result=mysqli_query($conn,$sql))
