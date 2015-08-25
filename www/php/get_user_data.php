@@ -14,9 +14,6 @@
         'PicURL' => $_SESSION['picUrl'],
     );
 
-    //TODO:remove this later
-    $id = 'N-NcRMZupE';
-
     $dbHost = "localhost";
     $dbUser = "root";
     $dbPass = "J^mpStrt";
