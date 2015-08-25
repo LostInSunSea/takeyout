@@ -7,8 +7,8 @@
         exit ("Error: Not logged in!");
     }
 
-    $id = $_SESSION["id"];
-
+    //$id = $_SESSION["id"];
+    $id = 'A0BwIAdiU9';
 
     $ch = curl_init();
 
