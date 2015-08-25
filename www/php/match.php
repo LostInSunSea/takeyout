@@ -11,6 +11,7 @@
 
     $city = htmlspecialchars($_GET['city']);
     $country = htmlspecialchars($_GET['country']);
+    $type = htmlspecialchars($_GET['type']);
 
     $dbHost = "localhost";
     $dbUser = "root";
@@ -25,7 +26,14 @@
 
     $json = array();
 
-    $sql = "SELECT * FROM user WHERE id <> '$id' AND city = '$city' AND country = '$country' LIMIT 10";
+    if (type == "Travel")
+    {
+        $sql = "SELECT * FROM user WHERE id <> '$id' AND city = '$city' AND country = '$country' LIMIT 10";
+    }
+    else
+    {
+        //TODO: Select users who have a trip here on overlapping days
+    }
 
     if($result=mysqli_query($conn,$sql))
     {
