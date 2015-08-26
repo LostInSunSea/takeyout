@@ -40,7 +40,7 @@
             while($row = mysqli_fetch_array ($hometownResult))
             {
                 $bus = array(
-                    'id' => 0,
+                    'id' => $row['id'],
                     'city' => $row['city'],
                     'country' => $row['country'],
                     'startDate' => null,
