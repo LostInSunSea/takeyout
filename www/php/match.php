@@ -2,13 +2,13 @@
     header('Access-Control-Allow-Origin: *');
 
     session_start();
-    if (!isset($_SESSION['id']))
+    /*if (!isset($_SESSION['id']))
     {
         exit ("Error: Not logged in!");
     }
-    $id = $_SESSION["id"];
+    $id = $_SESSION["id"];*/
 
-    //$id = 'A0BwIAdiU9';
+    $id = 'A0BwIAdiU9';
 
     //$city = htmlspecialchars($_GET['city']);
     //$country = htmlspecialchars($_GET['country']);
@@ -52,6 +52,8 @@
             {
                 $city = $row['city'];
                 $country = $row['country'];
+                echo $city;
+                echo $country;
                 date_default_timezone_set("America/Tijuana");
                 $curDate = date("Y-m-d");
                 $finalSQL = "SELECT user.id, user.name, user.headline, user.industry, user.city, user.country, user.picFull, user.bio, user.languages, user.favoriteFoods
