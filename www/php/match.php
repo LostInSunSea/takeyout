@@ -57,7 +57,7 @@
                 //$finalSQL = "SELECT user.id, user.name, user.headline, user.industry, user.city, user.country, user.picFull, user.bio, user.languages, user.favoriteFoods
                 //                     FROM trip INNER JOIN user ON trip.owner = user.id WHERE $curDate > trip.startDate AND $curDate < trip.endDate LIMIT 10;";
                 $finalSQL = "SELECT user.id, user.name, user.headline, user.industry, user.city, user.country, user.picFull, user.bio, user.languages, user.favoriteFoods
-                                     FROM trip INNER JOIN user ON trip.owner = user.id WHERE user.city = '$city' AND user.country = '$country' LIMIT 10;";
+                                     FROM trip INNER JOIN user ON trip.owner = user.id WHERE trip.city = '$city' AND trip.country = '$country' LIMIT 10;";
             }
         }
     }
