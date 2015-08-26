@@ -52,12 +52,12 @@
             {
                 $city = $row['city'];
                 $country = $row['country'];
-                echo $city;
-                echo $country;
                 date_default_timezone_set("America/Tijuana");
                 $curDate = date("Y-m-d");
+                //$finalSQL = "SELECT user.id, user.name, user.headline, user.industry, user.city, user.country, user.picFull, user.bio, user.languages, user.favoriteFoods
+                //                     FROM trip INNER JOIN user ON trip.owner = user.id WHERE $curDate > trip.startDate AND $curDate < trip.endDate LIMIT 10;";
                 $finalSQL = "SELECT user.id, user.name, user.headline, user.industry, user.city, user.country, user.picFull, user.bio, user.languages, user.favoriteFoods
-                                     FROM trip INNER JOIN user ON trip.owner = user.id WHERE $curDate > trip.startDate AND $curDate < trip.endDate LIMIT 10;";
+                                     FROM trip INNER JOIN user ON trip.owner = user.id LIMIT 10;";
             }
         }
     }
