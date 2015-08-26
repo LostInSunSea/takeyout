@@ -45,7 +45,19 @@
     }
     else if ($type == "Hometown")
     {
-        //TODO: Select users who have a trip here on overlapping days
+        $getCurHometown = "SELECT * FROM user WHERE id = '$id'";
+        if ($curUserResult = mysqli_query($conn,$getCurHometown))
+        {
+            while ($row = mysqli_fetch_array($curUserResult))
+            {
+                $city = $row['city'];
+                $country = $row['country'];
+                date_default_timezone_set("America/Tijuana");
+                $curDate = date("Y-m-d");
+                $finalSQL = "SELECT user.id, user.name, user.headline, user.industry, user.city, user.country, user.picFull, user.bio, user.languages, user.favoriteFoods
+                                     FROM trip INNER JOIN user ON trip.owner = user.id WHERE $curDate > trip.startDate AND $curDate < trip.endDate LIMIT 10;";
+            }
+        }
         exit ('[]');
     }
 
