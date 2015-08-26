@@ -58,7 +58,6 @@
                                      FROM trip INNER JOIN user ON trip.owner = user.id WHERE $curDate > trip.startDate AND $curDate < trip.endDate LIMIT 10;";
             }
         }
-        exit ('[]');
     }
 
     if($result=mysqli_query($conn,$finalSQL))
