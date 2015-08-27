@@ -1,11 +1,12 @@
 <?php
+	/*
     session_start();
     if (!isset($_SESSION['id']))
     {
         exit ("Error: Not logged in!");
     }
-
-
+	*/
+	
     $message = htmlspecialchars($_POST['message']);
     $from = htmlspecialchars($_POST['from']);
     $to = htmlspecialchars($_POST['to']);

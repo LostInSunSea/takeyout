@@ -1,12 +1,12 @@
 <?php
-
+	/*
     session_start();
-
+	
     if (!isset($_SESSION['id']))
     {
         exit ("Error: Not logged in!");
     }
-
+	*/
     $ID = htmlspecialchars($_GET['conversationID']);
     $limit = htmlspecialchars($_GET['limit']);
 

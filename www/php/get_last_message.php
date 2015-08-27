@@ -1,5 +1,5 @@
 <?php
-
+	/*
     session_start();
 
     if (!isset($_SESSION['id']))
@@ -8,7 +8,9 @@
     }
 
     $id = $_SESSION["id"];
-
+	*/
+	//this is temp for testing
+	$id = $_GET["id"];
     $ID = htmlspecialchars($_GET['conversationID']);
 
     $dbHost = "localhost";
