@@ -13,7 +13,7 @@ if ($conn->connect_error)
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM conversation WHERE user1 = '$ID' OR user2 = '$ID'";
+$sql = "SELECT id FROM conversation WHERE user1 = '$ID' OR user2 = '$ID'";
 if ($result=mysqli_query($conn,$sql))
 {
     if (mysqli_num_rows($result))
@@ -23,10 +23,13 @@ if ($result=mysqli_query($conn,$sql))
     }
     else
     {
-        echo '{}';
+        $jsonstring = "{}";
+        echo $jsonstring;
     }
 
 }
 $conn->close();
+
+return $jsonstring;
 
 ?>
