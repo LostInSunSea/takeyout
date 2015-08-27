@@ -18,6 +18,7 @@ if ($result=mysqli_query($conn,$sql))
 {
     if (mysqli_num_rows($result))
     {		
+        $result.fetch_all();
         $jsonstring = json_encode($result);
         echo $jsonstring;
     }
@@ -25,6 +26,7 @@ if ($result=mysqli_query($conn,$sql))
     {
         $jsonstring = "{}";
         echo $jsonstring;
+        $result = $jsonstring;
     }
 
 }
