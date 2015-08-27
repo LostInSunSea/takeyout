@@ -30,6 +30,6 @@ if ($result=mysqli_query($conn,$sql))
 }
 $conn->close();
 
-return $jsonstring;
+return $result;
 
 ?>
