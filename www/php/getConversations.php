@@ -41,6 +41,5 @@ if ($result=mysqli_query($conn,$sql))
 $conn->close();
 
 echo $json;
-return $json;
 
 ?>
