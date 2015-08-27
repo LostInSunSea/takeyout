@@ -18,19 +18,11 @@ $json = array();
 $sql = "SELECT * FROM conversation WHERE user1 = '$ID' OR user2 = '$ID'";
 if ($result=mysqli_query($conn,$sql))
 {
-    while($row = mysqli_fetch_array($result))
+    while ($row = $result->fetch_assoc())
     {
-        $conv = array(
-            'id' => $row['id'],
-            'user1' => $row['user1'],
-            'user2' => $row['user2'],
-            'time' => $row['time']
-        );
+        $conv = json_encode($row);
         array_push($json, $conv);
-
     }
-
-    echo $json;
     /*if (mysqli_num_rows($result))
     {		
         $result = $result->fetch_assoc();
