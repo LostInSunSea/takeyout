@@ -26,12 +26,11 @@ if ($result=mysqli_query($conn,$sql))
     {
         $jsonstring = "{}";
         echo $jsonstring;
-        $result = $jsonstring;
     }
 
 }
 $conn->close();
 
-return $result;
+return $jsonstring;
 
 ?>
