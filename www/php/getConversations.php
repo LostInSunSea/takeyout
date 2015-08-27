@@ -26,6 +26,8 @@ if ($result=mysqli_query($conn,$sql))
             'user2' => $row['user2'],
             'time' => $row['time']
         );
+        array_push($json, $conv);
+        
     }
     /*if (mysqli_num_rows($result))
     {		
@@ -39,7 +41,6 @@ if ($result=mysqli_query($conn,$sql))
         echo $jsonstring;
     }*/
 
-    array_push($json, $conv);
 
 }
 $conn->close();
