@@ -27,8 +27,10 @@ if ($result=mysqli_query($conn,$sql))
             'time' => $row['time']
         );
         array_push($json, $conv);
-        
+
     }
+
+    echo $json;
     /*if (mysqli_num_rows($result))
     {		
         $result = $result->fetch_assoc();
