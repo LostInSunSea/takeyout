@@ -21,6 +21,7 @@ if ($result=mysqli_query($conn,$sql))
     while ($row = $result->fetch_assoc())
     {
         $conv = json_encode($row);
+        echo $conv;
         array_push($json, $conv);
     }
     /*if (mysqli_num_rows($result))
