@@ -40,6 +40,7 @@ if ($result=mysqli_query($conn,$sql))
 }
 $conn->close();
 
+$jsonstring = json_encode($json);
 echo $json;
 
 ?>
