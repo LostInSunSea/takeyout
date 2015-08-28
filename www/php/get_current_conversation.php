@@ -3,7 +3,7 @@
 header('Access-Control-Allow-Origin: *');
 
 
-$ID = htmlspecialchars($_GET['currentConversation']);
+$ID = htmlspecialchars($_GET['conversationID']);
 
 $dbHost = 'localhost';
 $dbUser = "root";
