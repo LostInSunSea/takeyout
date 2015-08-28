@@ -1,14 +1,16 @@
 <?php
 
-    $dbHost = 'localhost';
-    $dbUser = "root";
-    $dbPass = "J^mpStrt";
-    $dbDatabase = "takeyout";
+    exit ($_SESSION['id']);
 
     if (!isset($_SESSION['id']))
     {
         exit ("Error: Not logged in!");
     }
+
+    $dbHost = 'localhost';
+    $dbUser = "root";
+    $dbPass = "J^mpStrt";
+    $dbDatabase = "takeyout";
 
     $id = $_SESSION['id'];
 
