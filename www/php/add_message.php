@@ -31,7 +31,7 @@
     }
 
 //TODO: Add time
-	echo("world")
+	echo("world");
 	echo($message);
 	print($message);
     $sql = "INSERT INTO reply (id, message, fromUser, toUser, time, conversationId)
