@@ -11,6 +11,7 @@
     $from = htmlspecialchars($_POST['from']);
     $to = htmlspecialchars($_POST['to']);
     $convoID = htmlspecialchars($_POST['convoID']);
+    $id=htmlspecialchars($_POST['id']);
 
     if ($message = "")
     {
@@ -31,7 +32,7 @@
 //TODO: Add time
 
     $sql = "INSERT INTO reply (id, message, fromUser, toUser, time, conversation_id)
-            VALUES (NULL, '$message', '$from', '$to', NULL, '$convoID')";
+            VALUES ($id, '$message', '$from', '$to', NULL, '$convoID')";
 
     if ($conn->query($sql) === TRUE)
     {
