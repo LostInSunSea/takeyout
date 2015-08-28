@@ -47,5 +47,5 @@ if ($result=mysqli_query($conn,$sql))
 $jsonstring = json_encode($json);
 echo $jsonstring;
 
-
+$conn->close();
 ?>
