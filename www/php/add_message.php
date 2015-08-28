@@ -7,7 +7,7 @@
     }
 	*/
 	
-    $message = htmlspecialchars($_POST['message']);
+    $message =  $_POST['message'] ;
     $from = htmlspecialchars($_POST['from']);
     $to = htmlspecialchars($_POST['to']);
     $convoID = htmlspecialchars($_POST['convoID']);
@@ -31,7 +31,9 @@
     }
 
 //TODO: Add time
+	echo("world")
 	echo($message);
+	print($message);
     $sql = "INSERT INTO reply (id, message, fromUser, toUser, time, conversationId)
             VALUES (NULL, '".$message."', '$from', '$to', $time, '$convoID')";
 
