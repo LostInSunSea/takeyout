@@ -28,13 +28,10 @@ if ($result=mysqli_query($conn, $user1Query))
 {
     if ($row = $result->fetch_assoc())
     {
-        $conversation = array(
-            'id' => $conversation['id'],
-            'tripID' => $conversation['tripId'],
-            'time' => $conversation['time'],
-            'user1ID' => $row['id'],
-            'user1Name' => $row['name'],
-            'user1Thumbnail' => $row['picThumbnail'],
+        $user1 = array(
+            'id' => $row['id'],
+            'name' => $row['name'],
+            'picThumbnail' => $row['picThumbnail'],
         );
     }
 }
@@ -44,11 +41,17 @@ if ($result=mysqli_query($conn, $user2Query))
 {
     if ($row = $result->fetch_assoc())
     {
-        # Append the user2 info to the array
-        echo $row;
-       $conversation['user2ID'] = $row['id'];
-       $conversation['user2Name'] = $row['name'];
-       $conversation['user2Thumbnail'] = $row['picThumbnail'];
+        $conversation = array(
+            'id' => $conversation['id'],
+            'tripID' => $conversation['tripId'],
+            'time' => $conversation['time'],
+            'user1ID' => $user1['id'],
+            'user1Name' => $user1['name'],
+            'user1Thumbnail' => $user1['picThumbnail'],
+            'user2ID' => $row['id'],
+            'user2Name' => $row['name'],
+            'user2Name' => $row['picThumbnail'] 
+        ); 
     }
 }
 $conn->close();
