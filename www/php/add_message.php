@@ -7,7 +7,7 @@
     }
 	*/
 	
-    $message =  $_POST['message'] ;
+    $message =  $_POST['text'];
     $from = htmlspecialchars($_POST['from']);
     $to = htmlspecialchars($_POST['to']);
     $convoID = htmlspecialchars($_POST['convoID']);
