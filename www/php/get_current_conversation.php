@@ -50,7 +50,7 @@ if ($result=mysqli_query($conn, $user2Query))
             'user1Thumbnail' => $user1['picThumbnail'],
             'user2ID' => $row['id'],
             'user2Name' => $row['name'],
-            'user2Name' => $row['picThumbnail'] 
+            'user2Thumbnail' => $row['picThumbnail'] 
         ); 
     }
 }
