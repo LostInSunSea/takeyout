@@ -45,6 +45,7 @@
                     'id' => $row['id'],
                     'message' => $row['message'],
                     'from' => $row['fromUser'],
+                    'time' => $row['time']
                 );
                 array_push($json, $bus);
             }
