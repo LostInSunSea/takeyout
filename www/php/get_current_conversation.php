@@ -13,32 +13,46 @@ if ($conn->connect_error)
     die("Connection failed: " . $conn->connect_error);
 }
 
-$json = array();
 
-$sql = "SELECT * FROM conversation WHERE id = '$ID'";
-if ($result=mysqli_query($conn,$sql))
+$sqlConv = "SELECT * FROM conversation WHERE id = '$ID'";
+if ($result=mysqli_query($conn,$sqlConv))
 {
-    while ($row = $result->fetch_assoc())
-    {
-        array_push($json, $row);
-    }
-    /*if (mysqli_num_rows($result))
-    {       
-        $result = $result->fetch_assoc();
-        $jsonstring = json_encode($result);
-        echo $jsonstring;
-    }
-    else
-    {
-        $jsonstring = "{}";
-        echo $jsonstring;
-    }*/
+    $conversation = $result->fetch_assoc();
+}
 
 
+$sqlUser = "SELECT id,name,picThumbnail FROM user WHERE id = '%s'";
+# Fetch the info for user1
+$user1Query = sprintf($sqlUser, $conversation['user1']);
+if ($result=mysqli_query($conn, $user1Query))
+{
+    if ($row = $result->fetch_assoc())
+    {
+        $conversation = array(
+            'id' => $conversation['id'],
+            'tripID' => $conversation['tripId'],
+            'time' => $conversation['time'],
+            'user1ID' => $row['id'],
+            'user1Name' => $row['name'],
+            'user1Thumbnail' => $row['picThumbnail'],
+        );
+    }
+}
+# Fecth the info for user2
+$user2Query = sprintf($sqlUser, $conversation['user2']);
+if ($result=mysqli_query($conn, $user2Query))
+{
+    if ($row = $result->fetch_assoc())
+    {
+        # Append the user2 info to the array
+       $conversation['user2ID'] = $row['id'];
+       $conversation['user2Name'] = $row['name'];
+       $conversation['user2Thumbnail'] = $row['picThumbnail'];
+    }
 }
 $conn->close();
 
-$jsonstring = json_encode($json);
+$jsonstring = json_encode($conversation);
 echo $jsonstring;
 
 ?>
