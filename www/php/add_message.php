@@ -7,13 +7,12 @@
     }
 	*/
 	
-    $message =  $_POST['text'];
+    $text =  $_POST['text'];
     $from = htmlspecialchars($_POST['from']);
     $to = htmlspecialchars($_POST['to']);
     $convoID = htmlspecialchars($_POST['convoID']);
-    $time=htmlspecialchars($_POST["time"]);
-    $id=htmlspecialchars($_POST["id"]);
-
+    $time=htmlspecialchars($_POST["time"]); 
+    
     if ($message = "")
     {
         die("Empty Message");
@@ -33,9 +32,8 @@
 //TODO: Add time
 	echo("world");
 	echo($message);
-	print($message);
     $sql = "INSERT INTO reply (id, message, fromUser, toUser, time, conversationId)
-            VALUES (NULL, '".$message."', '$from', '$to', $time, '$convoID')";
+            VALUES (NULL, '$text', '$from', '$to', $time, '$convoID')";
 
     if ($conn->query($sql) === TRUE)
     {
