@@ -45,6 +45,7 @@ if ($result=mysqli_query($conn, $user2Query))
     if ($row = $result->fetch_assoc())
     {
         # Append the user2 info to the array
+        echo $row;
        $conversation['user2ID'] = $row['id'];
        $conversation['user2Name'] = $row['name'];
        $conversation['user2Thumbnail'] = $row['picThumbnail'];
