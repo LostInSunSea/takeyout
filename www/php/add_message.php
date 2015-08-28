@@ -31,7 +31,7 @@
 //TODO: Add time
 
     $sql = "INSERT INTO reply (id, message, fromUser, toUser, time, conversation_id)
-            VALUES (null, '$message', '$from', '$to', NULL, '$convoID')";
+            VALUES (NULL, '$message', '$from', '$to', NULL, '$convoID')";
 
     if ($conn->query($sql) === TRUE)
     {
