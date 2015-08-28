@@ -33,6 +33,7 @@ if ($result=mysqli_query($conn,$sql))
                 'id' => $row['id'],
                 'message' => $row['message'],
                 'from' => $row['from_user'],
+                'time' => $row['time']
             );
             array_push($json, $bus);
         }
