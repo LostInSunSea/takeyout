@@ -7,17 +7,18 @@
     }
 	*/
 	
-    $message = htmlspecialchars($_POST['message']);
+    $text =  htmlspecialchars( $_POST['text']);
     $from = htmlspecialchars($_POST['from']);
     $to = htmlspecialchars($_POST['to']);
     $convoID = htmlspecialchars($_POST['convoID']);
-
+    $time=htmlspecialchars($_POST["time"]); 
+    
     if ($message = "")
     {
         die("Empty Message");
     }
 
-    $dbHost = "http://kawaiikrew.net";
+    $dbHost = "localhost";
     $dbUser = "root";
     $dbPass = "J^mpStrt";
     $dbDatabase = "takeyout";
@@ -29,9 +30,8 @@
     }
 
 //TODO: Add time
-
-    $sql = "INSERT INTO reply (id, message, fromUser, toUser, time, conversation_id)
-            VALUES (NULL, '$message', '$from', '$to', NULL, '$convoID')";
+    $sql = "INSERT INTO reply (id, message, fromUser, toUser, time, conversationId)
+            VALUES (NULL, '$text', '$from', '$to', $time, '$convoID')";
 
     if ($conn->query($sql) === TRUE)
     {
