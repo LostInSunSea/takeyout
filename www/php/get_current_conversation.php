@@ -1,5 +1,8 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
+
+
 $ID = htmlspecialchars($_GET['currentConversation']);
 
 $dbHost = 'localhost';
