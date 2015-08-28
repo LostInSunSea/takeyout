@@ -19,7 +19,7 @@
         die("Empty Message");
     }
 
-    $dbHost = "http://kawaiikrew.net";
+    $dbHost = "localhost";
     $dbUser = "root";
     $dbPass = "J^mpStrt";
     $dbDatabase = "takeyout";
