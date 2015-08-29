@@ -24,7 +24,7 @@
 
     $json = array();
 
-    $sql = "SELECT conversation.tripId, conversation.user1, conversation.user2, user.id, user.name, user.picFull FROM conversation INNER JOIN user ON (conversation.user1 = user.id OR conversation.user2 = user.id) WHERE conversation.tripId = '$trip' AND (conversation.user1 = '$id' OR conversation.user2 = '$id')";
+    $sql = "SELECT conversation.tripId, conversation.user1, conversation.user2, user.id, user.name, user.picFull, user.headline FROM conversation INNER JOIN user ON (conversation.user1 = user.id OR conversation.user2 = user.id) WHERE conversation.tripId = '$trip' AND (conversation.user1 = '$id' OR conversation.user2 = '$id')";
     if ($result=mysqli_query($conn,$sql))
     {
         while($row = mysqli_fetch_array($result))
@@ -36,7 +36,8 @@
                     $bus = array(
                         'id' => $row['id'],
                         'name' => $row['name'],
-                        'picFull' => $row['picFull']
+                        'picFull' => $row['picFull'],
+                        'headline' => $row['headline']
                     );
                     array_push($json, $bus);
                 }
@@ -48,7 +49,8 @@
                     $bus = array(
                         'id' => $row['id'],
                         'name' => $row['name'],
-                        'picFull' => $row['picFull']
+                        'picFull' => $row['picFull'],
+                        'headline' => $row['headline']
                     );
                     array_push($json, $bus);
                 }
