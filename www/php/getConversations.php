@@ -1,7 +1,13 @@
 <?php
-
-$ID = htmlspecialchars($_GET['userID']);
-
+	session_start();
+    if (!isset($_SESSION['id']))
+    {
+        exit ("Error: Not logged in!");
+    }
+    
+	$ID = htmlspecialchars($_GET["id"]);
+	$sID= htmlspecialchars($_SESSION["id"]);
+	
 $dbHost = 'localhost';
 $dbUser = "root";
 $dbPass = "J^mpStrt";
@@ -15,30 +21,19 @@ if ($conn->connect_error)
 
 $json = array();
 
-$sql = "SELECT * FROM conversation WHERE user1 = '$ID' OR user2 = '$ID'";
+$sql = "SELECT * FROM conversation WHERE (user1 = '$sID' OR user2 = '$sID') AND tripId = $ID";
 if ($result=mysqli_query($conn,$sql))
 {
     while ($row = $result->fetch_assoc())
     {
         array_push($json, $row);
     }
-    /*if (mysqli_num_rows($result))
-    {		
-        $result = $result->fetch_assoc();
-        $jsonstring = json_encode($result);
-        echo $jsonstring;
-    }
-    else
-    {
-        $jsonstring = "{}";
-        echo $jsonstring;
-    }*/
-
 
 }
 $conn->close();
 
 $jsonstring = json_encode($json);
+echo $ID;
+echo $sID;
 echo $jsonstring;
-
 ?>
