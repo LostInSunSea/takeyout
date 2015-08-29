@@ -21,7 +21,7 @@ if ($conn->connect_error)
 
 $json = array();
 
-$sql = "SELECT * FROM conversation WHERE user1 = '$sID' OR user2 = '$sID' AND tripId = '$ID'";
+$sql = "SELECT * FROM conversation WHERE user1 = '$sID' OR user2 = '$sID' AND tripId = $ID";
 if ($result=mysqli_query($conn,$sql))
 {
     while ($row = $result->fetch_assoc())
@@ -34,5 +34,4 @@ $conn->close();
 
 $jsonstring = json_encode($json);
 echo $jsonstring;
-echo $sID;
 ?>
