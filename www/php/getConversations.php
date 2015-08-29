@@ -29,5 +29,5 @@ $conn->close();
 
 $jsonstring = json_encode($json);
 echo $jsonstring;
-
+echo "bitches";
 ?>
