@@ -1,7 +1,7 @@
 <?php
 	
 	$ID = htmlspecialchars($_GET['id']);
-	$sID= htmlspecialchars($_GET['sid']);
+	$sID= htmlspecialchars($_SESSION['id']);
 
 $dbHost = 'localhost';
 $dbUser = "root";
