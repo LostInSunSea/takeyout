@@ -1,8 +1,8 @@
 <?php
 	
-	$ID = htmlspecialchars($_GET['id']);
-	$sID= htmlspecialchars($_SESSION['id']);
-
+	$ID = htmlspecialchars($_GET["id"]);
+	$sID= htmlspecialchars($_SESSION["id"]);
+	
 $dbHost = 'localhost';
 $dbUser = "root";
 $dbPass = "J^mpStrt";
