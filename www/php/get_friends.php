@@ -37,7 +37,8 @@
                         'id' => $row['id'],
                         'name' => $row['name'],
                         'picFull' => $row['picFull'],
-                        'headline' => $row['headline']
+                        'headline' => $row['headline'],
+                        'tripId' => $row['tripId']
                     );
                     array_push($json, $bus);
                 }
@@ -50,7 +51,8 @@
                         'id' => $row['id'],
                         'name' => $row['name'],
                         'picFull' => $row['picFull'],
-                        'headline' => $row['headline']
+                        'headline' => $row['headline'],
+                        'tripId' => $row['tripId']
                     );
                     array_push($json, $bus);
                 }
