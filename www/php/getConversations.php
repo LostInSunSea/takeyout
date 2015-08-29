@@ -1,7 +1,11 @@
 <?php
-
-$ID = htmlspecialchars($_GET['id']);
-$sID= htmlspecialchars($_SESSION['id']);
+	session_start();
+    if (!isset($_SESSION['id']))
+    {
+        exit ("Error: Not logged in!");
+    }
+	$ID = htmlspecialchars($_GET['id']);
+	$sID= htmlspecialchars($_SESSION['id']);
 
 $dbHost = 'localhost';
 $dbUser = "root";
