@@ -1,11 +1,7 @@
 <?php
-	session_start();
-    if (!isset($_SESSION['id']))
-    {
-        exit ("Error: Not logged in!");
-    }
+	
 	$ID = htmlspecialchars($_GET['id']);
-	$sID= htmlspecialchars($_SESSION['id']);
+	$sID= htmlspecialchars($_GET['sid']);
 
 $dbHost = 'localhost';
 $dbUser = "root";
@@ -27,18 +23,6 @@ if ($result=mysqli_query($conn,$sql))
     {
         array_push($json, $row);
     }
-    /*if (mysqli_num_rows($result))
-    {		
-        $result = $result->fetch_assoc();
-        $jsonstring = json_encode($result);
-        echo $jsonstring;
-    }
-    else
-    {
-        $jsonstring = "{}";
-        echo $jsonstring;
-    }*/
-
 
 }
 $conn->close();
