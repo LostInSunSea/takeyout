@@ -1,6 +1,7 @@
 <?php
 
-$ID = htmlspecialchars($_GET['userID']);
+$ID = htmlspecialchars($_GET['id']);
+$sID= htmlspecialchars($_SESSION['id'])
 
 $dbHost = 'localhost';
 $dbUser = "root";
@@ -15,7 +16,7 @@ if ($conn->connect_error)
 
 $json = array();
 
-$sql = "SELECT * FROM conversation WHERE user1 = '$ID' OR user2 = '$ID'";
+$sql = "SELECT * FROM conversation WHERE user1 = '$sID' OR user2 = '$sID' AND tripId = '$ID'";
 if ($result=mysqli_query($conn,$sql))
 {
     while ($row = $result->fetch_assoc())
