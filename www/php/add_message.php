@@ -1,14 +1,14 @@
 <?php
-	/*
+	
     session_start();
     if (!isset($_SESSION['id']))
     {
         exit ("Error: Not logged in!");
     }
-	*/
+	
 	
     $text =  htmlspecialchars( $_POST['text']);
-    $from = htmlspecialchars($_POST['from']);
+    $from = $_SESSION['id']; 
     $to = htmlspecialchars($_POST['to']);
     $convoID = htmlspecialchars($_POST['convoID']);
     $time=htmlspecialchars($_POST["time"]); 
