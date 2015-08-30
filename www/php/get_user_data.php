@@ -40,7 +40,6 @@
         }
     }
     $jsonstring = json_encode($user);
-    //echo $jsonstring;
-    echo($_SESSION["id"]);
+    echo $jsonstring;
 
 ?>
