@@ -25,6 +25,8 @@ $sql = "DELETE FROM meetingRequest WHERE receiveId = '$id' AND id = '$requestId'
 
 if (mysqli_query($conn, $sql))
 {
+    echo '$id';
+    echo '$requestId';
     echo "Success";
 }
 else
