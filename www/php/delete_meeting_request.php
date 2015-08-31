@@ -21,7 +21,7 @@ if ($conn->connect_error)
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "DELETE FROM meetingRequest WHERE receiveId = '$id' AND id = $requestId";
+$sql = "DELETE FROM meetingRequest WHERE receiveId = '$id' AND id = '$requestId'";
 
 if (mysqli_query($conn, $sql))
 {
