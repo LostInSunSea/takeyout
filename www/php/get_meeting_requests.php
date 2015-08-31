@@ -26,6 +26,7 @@ if ($result=mysqli_query($conn,$sql)) {
     while ($row = mysqli_fetch_array($result))
     {
         $bus = array(
+            'id' => $row['id'],
             'name' => $row['name'],
             'picFull' => $row['picFull'],
             'date' => $row['date'],
