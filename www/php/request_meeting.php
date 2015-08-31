@@ -24,7 +24,7 @@ if ($conn->connect_error)
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "INSERT INTO meetingRequest (id, time, date, place, sendId, receiveId)
+$sql = "INSERT INTO meetingRequest (id, time, date, place, sentId, receiveId)
         VALUES (NULL, '$time', '$date', '$place', '$id', '$friend')";
 
 if (mysqli_query($conn, $sql))
