@@ -1,10 +1,10 @@
 <?php
 
-    /*session_start();
+    session_start();
     if (!isset($_SESSION['id']))
     {
         exit ("Error: Not logged in!");
-    }*/
+    }
 
     $dbHost = 'localhost';
     $dbUser = "root";
@@ -20,19 +20,25 @@
     }
 
     $otherUser = $_GET["otherUser"];
+    $trip = $_GET["trip"];
 
-    //$sql = "SELECT * FROM accept WHERE receiveId = '$id' AND sentId = '$otherUser'";
-    $sql = "SELECT * FROM accept";
+    $sql = "SELECT * FROM accept WHERE receiveId = '$id' AND sentId = '$otherUser'";
+    //$sql = "SELECT * FROM accept";
 
     if ($result=mysqli_query($conn,$sql))
     {
         if ($result->num_rows)
         {
             echo "Found";
+            //TODO: delete this item, create a new conversation, and add to the reject table
         }
         else
         {
-            echo "Not found";
+            $makeRequestSQL = "INSERT INTO accept(id, sentId, receiveId, tripId) VALUES (NULL,'$id','$otherUser','$trip')";
+            if ($newRequestResult = mysqli_query($conn,$makeRequestSQL))
+            {
+                echo "New request made";
+            }
         }
     }
 
