@@ -20,7 +20,6 @@
     }
 
     $otherUser = $_GET["otherUser"];
-    $trip = $_GET["trip"];
 
     $sql = "SELECT * FROM accept WHERE receiveId = '$id' AND sentId = '$otherUser'";
     //$sql = "SELECT * FROM accept";
@@ -34,9 +33,10 @@
         }
         else
         {
-            $makeRequestSQL = "INSERT INTO accept(id, sentId, receiveId, tripId) VALUES (NULL,'$id','$otherUser','$trip')";
+            $makeRequestSQL = "INSERT INTO accept(id, sentId, receiveId) VALUES (NULL,'$id','$otherUser')";
             if ($newRequestResult = mysqli_query($conn,$makeRequestSQL))
             {
+                //TODO: add to reject table
                 echo "New request made";
             }
         }
