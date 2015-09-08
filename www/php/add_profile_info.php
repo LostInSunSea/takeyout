@@ -13,7 +13,7 @@
     $country = $_POST['country'];
     $preferences = $_POST['preferences'];
     $languages = $_POST['languages'];
-    $favoriteFoods = $_POST['favoriteFoods'];
+    $interests = $_POST['interests'];
 
     $id = $_SESSION["id"];
 
@@ -28,7 +28,7 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "UPDATE user SET bio = '$bio', city = '$city', country = '$country', preferences = '$preferences', languages = '$languages', favoriteFoods = '$favoriteFoods' WHERE id = '$id'";
+    $sql = "UPDATE user SET bio = '$bio', city = '$city', country = '$country', preferences = '$preferences', languages = '$languages', interests = '$interests' WHERE id = '$id'";
 
     if (mysqli_query($conn, $sql))
     {
