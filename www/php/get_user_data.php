@@ -34,7 +34,7 @@
                 'picFull' => $row['picFull'],
                 'bio' => $row['bio'],
                 'languages' => $row['languages'],
-                'favoriteFoods' => $row['favoriteFoods'],
+                'interests' => $row['interests'],
                 'id' => $row['id']
             );
         }
