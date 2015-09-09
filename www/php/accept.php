@@ -43,9 +43,13 @@
     {
         if ($result->num_rows)
         {
-            echo "Found";
             //TODO: delete this item, create a new conversation, and add to the reject table
-            $makeConversationSQL = "INSERT INTO conversation(id, time, user1, user2, tripId, city, country) VALUES (NULL,NULL,'$id','$otherUser','$trip','$city','$country')";
+            $makeConversationSQL = "INSERT INTO conversation(id, time, user1, user2, tripId, city, country)
+                                    VALUES (NULL,NULL,'$id','$otherUser','$trip','$city','$country')";
+            if (mysqli_query($conn,$makeConversationSQL))
+            {
+                echo("New conversation made");
+            }
         }
         else
         {
