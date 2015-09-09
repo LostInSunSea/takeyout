@@ -20,9 +20,24 @@
     }
 
     $otherUser = $_GET["otherUser"];
+    $trip = $_GET["trip"];
+    $city = $_GET["city"];
+    $country = $_GET["country"];
+
+    if ($trip == 0)
+    {
+        $findTripSQL = "SELECT * FROM trip WHERE city = '$city' AND country = '$country' AND owner = '$otherUser'";
+        //TODO: check that it only returns 1 thing
+        if ($tripResult = mysqli_query($conn,$findTripSQL))
+        {
+            while ($row = mysqli_fetch_array($tripResult))
+            {
+                $trip = $row['id'];
+            }
+        }
+    }
 
     $sql = "SELECT * FROM accept WHERE receiveId = '$id' AND sentId = '$otherUser'";
-    //$sql = "SELECT * FROM accept";
 
     if ($result=mysqli_query($conn,$sql))
     {
@@ -30,10 +45,11 @@
         {
             echo "Found";
             //TODO: delete this item, create a new conversation, and add to the reject table
+            $makeConversationSQL = "INSERT INTO conversation(id, time, user1, user2, tripId, city, country) VALUES (NULL,NULL,'$id','$otherUser','$trip','$city','$country')";
         }
         else
         {
-            $makeRequestSQL = "INSERT INTO accept(id, sentId, receiveId) VALUES (NULL,'$id','$otherUser')";
+            $makeRequestSQL = "INSERT INTO accept(id, sentId, receiveId, tripId) VALUES (NULL,'$id','$otherUser','$trip')";
             if ($newRequestResult = mysqli_query($conn,$makeRequestSQL))
             {
                 //TODO: add to reject table
