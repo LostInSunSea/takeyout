@@ -53,7 +53,7 @@
                 $city = $row['city'];
                 $country = $row['country'];
                 $finalSQL = "SELECT user.id, user.name, user.headline, user.industry, user.city, user.country, user.picFull, user.bio, user.languages, user.interests
-                                     FROM trip INNER JOIN user ON trip.owner = user.id WHERE user.id <> '$id' AND trip.city = '$city' AND trip.country = '$country' AND trip.active = 1;";
+                                     FROM trip INNER JOIN user ON trip.owner = user.id WHERE user.id <> '$id' AND trip.city = '$city' AND trip.country = '$country' AND trip.active = 1 AND user.id NOT IN (SELECT receiveId FROM rejection WHERE sentId = '$id');";
             }
         }
     }
