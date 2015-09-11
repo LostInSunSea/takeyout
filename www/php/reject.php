@@ -21,7 +21,7 @@
 
     $otherUser = $_POST["otherUser"];
 
-    $sql = "INSERT INTO rejection (id, sentId, receiveId) VALUES (NULL, '$id', '$otherUser'), (NULL, '$otherUser', '$id')";
+    $sql = "INSERT INTO rejection (id, sentId, receiveId) VALUES (NULL, '$id', '$otherUser')";
 
     if (mysqli_query($conn, $sql))
     {
