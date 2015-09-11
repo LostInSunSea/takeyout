@@ -39,7 +39,7 @@
             {
                 $city = $row['city'];
                 $country = $row['country'];
-                $finalSQL = "SELECT * FROM user WHERE id <> '$id' AND city = '$city' AND country = '$country' LIMIT 10";
+                $finalSQL = "SELECT * FROM user WHERE id <> '$id' AND city = '$city' AND country = '$country'AND id NOT IN (SELECT user1 FROM conversation WHERE user2 = '$id') AND id NOT IN (SELECT user2 FROM conversation WHERE user1 = '$id')";
             }
         }
     }
