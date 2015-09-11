@@ -43,7 +43,13 @@
     {
         if ($result->num_rows)
         {
-            //TODO: delete this item, create a new conversation, and add to the reject table
+            while($row = mysqli_fetch_array($result))
+            {
+                $deleteId = $row['id'];
+                $deleteSQL = "DELETE FROM accept WHERE id = '$deleteId'";
+                mysqli_query($conn,$deleteSQL);
+            }
+            //TODO: add to the reject table
             $makeConversationSQL = "INSERT INTO conversation(id, user1, user2, tripId, city, country) VALUES (NULL,'$id','$otherUser',$trip,'$city','$country')";
             if (mysqli_query($conn,$makeConversationSQL))
             {
