@@ -39,7 +39,7 @@
             {
                 $city = $row['city'];
                 $country = $row['country'];
-                $finalSQL = "SELECT * FROM user WHERE id <> '$id' AND city = '$city' AND country = '$country'AND id NOT IN (SELECT user1 FROM conversation WHERE user2 = '$id') AND id NOT IN (SELECT user2 FROM conversation WHERE user1 = '$id')";
+                $finalSQL = "SELECT * FROM user WHERE id <> '$id' AND city = '$city' AND country = '$country'AND id NOT IN (SELECT receiveId FROM rejection WHERE sentId = '$id')";
             }
         }
     }
@@ -53,7 +53,7 @@
                 $city = $row['city'];
                 $country = $row['country'];
                 $finalSQL = "SELECT user.id, user.name, user.headline, user.industry, user.city, user.country, user.picFull, user.bio, user.languages, user.interests
-                                     FROM trip INNER JOIN user ON trip.owner = user.id WHERE user.id <> '$id' AND trip.city = '$city' AND trip.country = '$country' AND trip.active = 1 LIMIT 10;";
+                                     FROM trip INNER JOIN user ON trip.owner = user.id WHERE user.id <> '$id' AND trip.city = '$city' AND trip.country = '$country' AND trip.active = 1;";
             }
         }
     }

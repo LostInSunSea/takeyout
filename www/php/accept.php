@@ -49,6 +49,8 @@
                 $deleteSQL = "DELETE FROM accept WHERE id = '$deleteId'";
                 mysqli_query($conn,$deleteSQL);
             }
+            $makeRejectionSQL = "INSERT INTO rejection (id, sentId, receiveId) VALUES (NULL, '$id', '$otherUser')";
+            mysqli_query($conn,$makeRejectionSQL);
             $makeConversationSQL = "INSERT INTO conversation(id, user1, user2, tripId, city, country) VALUES (NULL,'$id','$otherUser',$trip,'$city','$country')";
             if (mysqli_query($conn,$makeConversationSQL))
             {
@@ -57,6 +59,8 @@
         }
         else
         {
+            $makeRejectionSQL = "INSERT INTO rejection (id, sentId, receiveId) VALUES (NULL, '$id', '$otherUser')";
+            mysqli_query($conn,$makeRejectionSQL);
             $makeRequestSQL = "INSERT INTO accept(id, sentId, receiveId, tripId) VALUES (NULL,'$id','$otherUser','$trip')";
             if ($newRequestResult = mysqli_query($conn,$makeRequestSQL))
             {
