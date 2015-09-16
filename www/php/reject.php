@@ -13,6 +13,8 @@
 
     $id = $_SESSION['id'];
 
+    $tripId = $_POST['trip'];
+
     $conn = new mysqli($dbHost, $dbUser, $dbPass, $dbDatabase);
     if ($conn->connect_error)
     {
@@ -21,7 +23,7 @@
 
     $otherUser = $_POST["otherUser"];
 
-    $sql = "INSERT INTO rejection (id, sentId, receiveId) VALUES (NULL, '$id', '$otherUser')";
+    $sql = "INSERT INTO rejection (id, sentId, receiveId, tripId) VALUES (NULL, '$id', '$otherUser', $tripId)";
 
     if (mysqli_query($conn, $sql))
     {
