@@ -35,7 +35,7 @@
                 $homeCountry = $row['country'];
             }
 
-            $sql = "SELECT conversation.tripId, conversation.user1, conversation.user2, user.id, user.name, user.picFull, user.headline FROM conversation INNER JOIN user ON (conversation.user1 = user.id OR conversation.user2 = user.id) WHERE conversation.city = '$homeCity' AND conversation.country = '$homeCountry' AND (conversation.user1 = '$id' OR conversation.user2 = '$id')";
+            $sql = "SELECT conversation.tripId, conversation.user1, conversation.user2, user.id as userId, conversation.id as conversationId, user.name, user.picFull, user.headline FROM conversation INNER JOIN user ON (conversation.user1 = user.id OR conversation.user2 = user.id) WHERE conversation.city = '$homeCity' AND conversation.country = '$homeCountry' AND (conversation.user1 = '$id' OR conversation.user2 = '$id')";
         }
     }
     else
