@@ -49,7 +49,7 @@
                 $deleteSQL = "DELETE FROM accept WHERE id = '$deleteId'";
                 mysqli_query($conn,$deleteSQL);
             }
-            $makeRejectionSQL = "INSERT INTO rejection (id, sentId, receiveId) VALUES (NULL, '$id', '$otherUser')";
+            $makeRejectionSQL = "INSERT INTO rejection (id, sentId, receiveId, tripId) VALUES (NULL, '$id', '$otherUser', $trip)";
             mysqli_query($conn,$makeRejectionSQL);
             $makeConversationSQL = "INSERT INTO conversation(id, user1, user2, tripId, city, country) VALUES (NULL,'$id','$otherUser',$trip,'$city','$country')";
             if (mysqli_query($conn,$makeConversationSQL))
