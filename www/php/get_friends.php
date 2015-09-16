@@ -40,7 +40,7 @@
     }
     else
     {
-        $sql = "SELECT conversation.tripId, conversation.user1, conversation.user2, user.id, user.name, user.picFull, user.headline FROM conversation INNER JOIN user ON (conversation.user1 = user.id OR conversation.user2 = user.id) WHERE conversation.tripId = '$trip' AND (conversation.user1 = '$id' OR conversation.user2 = '$id')";
+        $sql = "SELECT conversation.tripId, conversation.user1, conversation.user2, user.id as userId, conversation.id as conversationId, user.name, user.picFull, user.headline FROM conversation INNER JOIN user ON (conversation.user1 = user.id OR conversation.user2 = user.id) WHERE conversation.tripId = '$trip' AND (conversation.user1 = '$id' OR conversation.user2 = '$id')";
     }
     if ($result=mysqli_query($conn,$sql))
     {
@@ -48,28 +48,30 @@
         {
             if ($row['user1'] == $id)
             {
-                if ($row['user2'] == $row['id'])
+                if ($row['user2'] == $row['userId'])
                 {
                     $bus = array(
-                        'id' => $row['id'],
+                        'id' => $row['userId'],
                         'name' => $row['name'],
                         'picFull' => $row['picFull'],
                         'headline' => $row['headline'],
-                        'tripId' => $row['tripId']
+                        'tripId' => $row['tripId'],
+                        'conversationId' => $row['conversationId']
                     );
                     array_push($json, $bus);
                 }
             }
             else if ($row['user2'] == $id)
             {
-                if ($row['user1'] == $row['id'])
+                if ($row['user1'] == $row['userId'])
                 {
                     $bus = array(
-                        'id' => $row['id'],
+                        'id' => $row['userId'],
                         'name' => $row['name'],
                         'picFull' => $row['picFull'],
                         'headline' => $row['headline'],
-                        'tripId' => $row['tripId']
+                        'tripId' => $row['tripId'],
+                        'conversationId' => $row['conversationId']
                     );
                     array_push($json, $bus);
                 }
