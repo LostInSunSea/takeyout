@@ -59,7 +59,7 @@
         }
         else
         {
-            $makeRejectionSQL = "INSERT INTO rejection (id, sentId, receiveId) VALUES (NULL, '$id', '$otherUser')";
+            $makeRejectionSQL = "INSERT INTO rejection (id, sentId, receiveId, tripId) VALUES (NULL, '$id', '$otherUser', $trip)";
             mysqli_query($conn,$makeRejectionSQL);
             $makeRequestSQL = "INSERT INTO accept(id, sentId, receiveId, tripId) VALUES (NULL,'$id','$otherUser','$trip')";
             if ($newRequestResult = mysqli_query($conn,$makeRequestSQL))
