@@ -18,7 +18,7 @@ if ($conn->connect_error)
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT meetingRequest.id as meetingId, time, date, place, sentId, receiveId, user.id as userId, name, picFull FROM meetingRequest INNER JOIN user ON meetingRequest.sentId = user.id WHERE receiveId = '$id'";
+$sql = "SELECT meetingRequest.id as meetingId, time, date, place, sentId, receiveId, user.id as userId, name, picFull, meetingRequest.conversationId FROM meetingRequest INNER JOIN user ON meetingRequest.sentId = user.id WHERE receiveId = '$id'";
 
 $json = array();
 
@@ -32,7 +32,8 @@ if ($result=mysqli_query($conn,$sql)) {
             'picFull' => $row['picFull'],
             'date' => $row['date'],
             'time' => $row['time'],
-            'place' => $row['place']
+            'place' => $row['place'],
+            'conversationId' => $row['conversationId']
         );
 
         array_push($json, $bus);

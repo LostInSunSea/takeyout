@@ -17,6 +17,7 @@ $friend = $_POST['userId'];
 $date = $_POST['date'];
 $time = $_POST['time'];
 $place = $_POST['place'];
+$conversation = $_POST['conversationId'];
 
 $conn = new mysqli($dbHost, $dbUser, $dbPass, $dbDatabase);
 if ($conn->connect_error)
@@ -24,8 +25,8 @@ if ($conn->connect_error)
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "INSERT INTO meeting (id, user1, user2, date, time, place)
-        VALUES (NULL, '$id', '$friend', '$date', '$time', '$place')";
+$sql = "INSERT INTO meeting (id, user1, user2, date, time, place, conversationId)
+        VALUES (NULL, '$id', '$friend', '$date', '$time', '$place', $conversation)";
 
 if (mysqli_query($conn, $sql))
 {
