@@ -91,7 +91,7 @@
                 'endDate' => $row['endDate'],
                 'backgroundImage' => null
             );
-            $url='http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country'];
+            $url="http://kawaiikrew.net/www/php/get_trip_picture.php?city=La%20Jolla&country=USA";
             $resp = httpGet($url);
             echo($url);
             echo("\n");
