@@ -55,8 +55,9 @@
                     'endDate' => null,
                     'backgroundImage' => null
                 );
-                
-                $url=rawurlencode('http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country']);
+                $city=urlencode($row['city']);
+                $country=urlencode($row['country']);
+                $url='http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $city . "&country=" . $country;
                 $resp = httpGet($url);
                 echo($url);
                 echo("\n");
