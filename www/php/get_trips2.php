@@ -56,7 +56,7 @@
                     'backgroundImage' => null
                 );
                 
-                $url=urlencode('http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country']);
+                $url=rawurlencode('http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country']);
                 $resp = httpGet($url);
                 echo($url);
                 echo("\n");
@@ -91,7 +91,7 @@
                 'endDate' => $row['endDate'],
                 'backgroundImage' => null
             );
-            $url=urlencode('http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country']);
+            $url='http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country'];
             $resp = httpGet($url);
             echo($url);
             echo("\n");
