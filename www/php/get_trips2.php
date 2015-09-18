@@ -56,7 +56,7 @@
                     'backgroundImage' => null
                 );
                 
-                $url='http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country'];
+                $url=urlencode('http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country']);
                 $resp = httpGet($url);
                 echo($url);
                 echo("\n");
@@ -91,7 +91,7 @@
                 'endDate' => $row['endDate'],
                 'backgroundImage' => null
             );
-            $url="http://kawaiikrew.net/www/php/get_trip_picture.php?city=La%20Jolla&country=USA";
+            $url=urlencode('http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country']);
             $resp = httpGet($url);
             echo($url);
             echo("\n");
