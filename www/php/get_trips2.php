@@ -1,13 +1,13 @@
 <?php
     header('Access-Control-Allow-Origin: *');
-	
+	/*
     session_start();
     if (!isset($_SESSION['id']))
     {
         exit ("Error: Not logged in!");
     }
-
-    $id = $_SESSION["id"];
+	*/
+    $id = $_GET["id"];
 
     //$id = 'A0BwIAdiU9';
 
@@ -47,6 +47,7 @@
                     'endDate' => null,
                     'backgroundImage' => null
                 );
+                echo('http://kawaiikrew.net/www/php/get_trip_picture.php?location=' . $row['city'] . ',%20' . $row['country'])
                 curl_setopt_array($ch, array(
                     CURLOPT_RETURNTRANSFER => 1,
                     CURLOPT_URL => 'http://kawaiikrew.net/www/php/get_trip_picture.php?location=' . $row['city'] . ',%20' . $row['country'],
