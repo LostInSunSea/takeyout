@@ -54,7 +54,7 @@
                 
                 curl_setopt_array($ch, array(
                     CURLOPT_RETURNTRANSFER => 1,
-                    CURLOPT_URL => 'http://kawaiikrew.net/www/php/get_trip_picture.php?location=' . $row['city'] . ",%20" . $row['country'],
+                    CURLOPT_URL => 'http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country'],
                     CURLOPT_USERAGENT => 'cURL Request'
                 ));
 
@@ -95,7 +95,7 @@
            
             curl_setopt_array($ch, array(
                 CURLOPT_RETURNTRANSFER => 1,
-                CURLOPT_URL => 'http://kawaiikrew.net/www/php/get_trip_picture.php?location=' . $row['city'] . ',%20' . $row['country'],
+                CURLOPT_URL => 'http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country'],
                 CURLOPT_USERAGENT => 'cURL Request'
             ));
 
