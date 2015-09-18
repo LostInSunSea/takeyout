@@ -47,7 +47,7 @@
                     'endDate' => null,
                     'backgroundImage' => null
                 );
-                echo('http://kawaiikrew.net/www/php/get_trip_picture.php?location=' . $row['city'] . ',%20' . $row['country'])
+                echo('http://kawaiikrew.net/www/php/get_trip_picture.php?location=' . $row['city'] . ',%20' . $row['country']);
                 curl_setopt_array($ch, array(
                     CURLOPT_RETURNTRANSFER => 1,
                     CURLOPT_URL => 'http://kawaiikrew.net/www/php/get_trip_picture.php?location=' . $row['city'] . ',%20' . $row['country'],
