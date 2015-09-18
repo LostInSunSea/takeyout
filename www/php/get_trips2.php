@@ -105,10 +105,6 @@
     {
         echo "Error updating record: " . mysqli_error($conn);
     }
-
-
-    curl_close($ch);
-
     $jsonstring = json_encode($json);
     echo("\n");
     echo $jsonstring;
