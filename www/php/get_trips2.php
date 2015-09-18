@@ -39,6 +39,10 @@
         //TODO: Uncomment this after more users in db
             while($row = mysqli_fetch_array ($hometownResult))
             {
+	            echo($row['city']);
+				echo("\r\n");
+				echo($row['country']);
+				echo("\r\n");
                 $bus = array(
                     'id' => $row['id'],
                     'city' => $row['city'],
@@ -47,9 +51,6 @@
                     'endDate' => null,
                     'backgroundImage' => null
                 );
-                echo('\n');
-                echo('http://kawaiikrew.net/www/php/get_trip_picture.php?location=' . $row['city'] . ',%20' . $row['country']);
-                echo('\n');
                 curl_setopt_array($ch, array(
                     CURLOPT_RETURNTRANSFER => 1,
                     CURLOPT_URL => 'http://kawaiikrew.net/www/php/get_trip_picture.php?location=' . $row['city'] . ',%20' . $row['country'],
@@ -86,7 +87,11 @@
                 'endDate' => $row['endDate'],
                 'backgroundImage' => null
             );
-
+            
+			echo($row['city']);
+			echo("\r\n");
+			echo($row['country']);
+			echo("\r\n");
             curl_setopt_array($ch, array(
                 CURLOPT_RETURNTRANSFER => 1,
                 CURLOPT_URL => 'http://kawaiikrew.net/www/php/get_trip_picture.php?location=' . $row['city'] . ',%20' . $row['country'],
