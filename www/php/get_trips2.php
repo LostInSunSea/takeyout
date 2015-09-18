@@ -57,7 +57,7 @@
                 ));
 
                 $resp = curl_exec($ch);
-                echo($resp);
+                echo('http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country']);
                 echo("\n");
                 $bus['backgroundImage'] = $resp;
                 array_push($json, $bus);
