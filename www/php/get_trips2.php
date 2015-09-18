@@ -47,7 +47,7 @@
                     'endDate' => null,
                     'backgroundImage' => null
                 );
-                echo($bus);
+                echo(array_values($bus));
                 echo("\r\n");
                 curl_setopt_array($ch, array(
                     CURLOPT_RETURNTRANSFER => 1,
@@ -85,7 +85,7 @@
                 'endDate' => $row['endDate'],
                 'backgroundImage' => null
             );
-            echo($bus);
+            echo(array_values($bus));
            
             curl_setopt_array($ch, array(
                 CURLOPT_RETURNTRANSFER => 1,
