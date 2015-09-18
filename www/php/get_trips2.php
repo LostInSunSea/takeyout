@@ -48,8 +48,10 @@
                     'backgroundImage' => null
                 );
                 echo("fuck\n");
-                echo(array_values($bus));
-                echo("\r\n");
+                echo($bus[city]);
+                var_dump($bus);
+                echo("\n");
+                
                 curl_setopt_array($ch, array(
                     CURLOPT_RETURNTRANSFER => 1,
                     CURLOPT_URL => 'http://kawaiikrew.net/www/php/get_trip_picture.php?location=' . $row['city'] . ',%20' . $row['country'],
