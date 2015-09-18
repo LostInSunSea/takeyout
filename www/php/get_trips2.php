@@ -47,21 +47,18 @@
                     'endDate' => null,
                     'backgroundImage' => null
                 );
-                var_dump($bus);
-                echo("\n");
-                $curl=curl_init();
-                curl_setopt_array($curl, array(
+                $url='http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country'];
+                curl_setopt_array($ch, array(
                     CURLOPT_RETURNTRANSFER => 1,
-                    CURLOPT_URL => 'http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country'],
+                    CURLOPT_URL => $url,
                     CURLOPT_USERAGENT => 'cURL Request'
                 ));
 
-                $resp = curl_exec($curl);
-                echo('http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country']);
+                $resp = curl_exec($ch);
+                echo($url);
                 echo("\n");
                 echo($resp);
                 echo("\n");
-                curl_close($curl);
                 $bus['backgroundImage'] = $resp;
                 array_push($json, $bus);
             }
@@ -91,8 +88,6 @@
                 'endDate' => $row['endDate'],
                 'backgroundImage' => null
             );
-            var_dump($bus);
-            echo("\n");
             $url='http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country'];
             curl_setopt_array($ch, array(
                 CURLOPT_RETURNTRANSFER => 1,
