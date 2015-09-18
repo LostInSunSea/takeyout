@@ -57,6 +57,8 @@
                 ));
 
                 $resp = curl_exec($ch);
+                echo('http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country']);
+                echo("\n");
                 echo($resp);
                 echo("\n");
                 $bus['backgroundImage'] = $resp;
@@ -98,6 +100,8 @@
             ));
 
             $resp = curl_exec($ch);
+            echo('http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country']);
+                echo("\n");
 			echo($resp);
 			echo("\n");
             $bus['backgroundImage'] = $resp;
