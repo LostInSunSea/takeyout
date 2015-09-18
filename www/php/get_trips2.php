@@ -10,8 +10,16 @@
     $id = $_GET["id"];
 
     //$id = 'A0BwIAdiU9';
-
-    $ch = curl_init();
+    function httpGet($url)
+	{
+    	$ch = curl_init();  
+		curl_setopt($ch,CURLOPT_URL,$url);
+		curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+		//  curl_setopt($ch,CURLOPT_HEADER, false); 
+		$output=curl_exec($ch); 
+		curl_close($ch);
+		return $output;
+	}
 
     //TODO: call auto_delete_trips.php here
 
@@ -47,17 +55,9 @@
                     'endDate' => null,
                     'backgroundImage' => null
                 );
+                
                 $url='http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country'];
-                /*
-                curl_setopt_array($ch, array(
-                    CURLOPT_RETURNTRANSFER => 1,
-                    CURLOPT_URL => $url,
-                    CURLOPT_USERAGENT => 'cURL Request'
-                ));
-				*/
-				curl_setopt($ch,CURLOPT_URL,$url);
-				curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-                $resp = curl_exec($ch);
+                $resp = httpGet($url);
                 echo($url);
                 echo("\n");
                 echo($resp);
@@ -92,17 +92,7 @@
                 'backgroundImage' => null
             );
             $url='http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country'];
-            /*
-            curl_setopt_array($ch, array(
-                CURLOPT_RETURNTRANSFER => 1,
-                CURLOPT_URL => $url,
-                CURLOPT_USERAGENT => 'cURL Request'
-            ));
-            */
-            curl_setopt($ch,CURLOPT_URL,$url);
-			curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-
-            $resp = curl_exec($ch);
+            $resp = httpGet($url);
             echo($url);
             echo("\n");
 			echo($resp);
