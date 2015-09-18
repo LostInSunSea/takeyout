@@ -47,9 +47,7 @@
                     'endDate' => null,
                     'backgroundImage' => null
                 );
-                echo("fuck\n");
                 var_dump($bus);
-                echo($row['city']);
                 echo("\n");
                 
                 curl_setopt_array($ch, array(
@@ -59,6 +57,8 @@
                 ));
 
                 $resp = curl_exec($ch);
+                echo($resp);
+                echo("\n");
                 $bus['backgroundImage'] = $resp;
                 array_push($json, $bus);
             }
@@ -88,8 +88,6 @@
                 'endDate' => $row['endDate'],
                 'backgroundImage' => null
             );
-            
-            echo("test\n");
             var_dump($bus);
             echo("\n");
            
@@ -100,7 +98,8 @@
             ));
 
             $resp = curl_exec($ch);
-
+			echo($resp);
+			echo("\n");
             $bus['backgroundImage'] = $resp;
             array_push($json, $bus);
         }
