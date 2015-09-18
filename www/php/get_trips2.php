@@ -114,6 +114,7 @@
     curl_close($ch);
 
     $jsonstring = json_encode($json);
-    //echo $jsonstring;
+    echo("\n");
+    echo $jsonstring;
 
 ?>
