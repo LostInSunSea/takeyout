@@ -14,7 +14,7 @@ $locationString = htmlspecialchars($_GET['location']);
 $location = explode(", ", $locationString);
 $city = $location[0];
 $country = $location[1];
-
+echo $locationString;
 $dbHost = "localhost";
 $dbUser = "root";
 $dbPass = "J^mpStrt";
