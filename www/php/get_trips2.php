@@ -95,7 +95,7 @@
             var $url='http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country'];
             curl_setopt_array($ch, array(
                 CURLOPT_RETURNTRANSFER => 1,
-                CURLOPT_URL => $url,
+                CURLOPT_URL => 'http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country'],
                 CURLOPT_USERAGENT => 'cURL Request'
             ));
 
