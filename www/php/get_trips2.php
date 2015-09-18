@@ -88,7 +88,7 @@
                 'backgroundImage' => null
             );
             
-			echo($row['city']);
+			echo($row);
 			echo("\r\n");
 			echo($row['country']);
 			echo("\r\n");
