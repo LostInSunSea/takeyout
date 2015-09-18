@@ -49,7 +49,7 @@
                 );
                 echo('\n');
                 echo('http://kawaiikrew.net/www/php/get_trip_picture.php?location=' . $row['city'] . ',%20' . $row['country']);
-                echo('\n')
+                echo('\n');
                 curl_setopt_array($ch, array(
                     CURLOPT_RETURNTRANSFER => 1,
                     CURLOPT_URL => 'http://kawaiikrew.net/www/php/get_trip_picture.php?location=' . $row['city'] . ',%20' . $row['country'],
