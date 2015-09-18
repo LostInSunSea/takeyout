@@ -47,6 +47,7 @@
                     'endDate' => null,
                     'backgroundImage' => null
                 );
+                echo("fuck\n");
                 echo(array_values($bus));
                 echo("\r\n");
                 curl_setopt_array($ch, array(
@@ -85,6 +86,7 @@
                 'endDate' => $row['endDate'],
                 'backgroundImage' => null
             );
+            echo("cock\n");
             echo(array_values($bus));
            
             curl_setopt_array($ch, array(
