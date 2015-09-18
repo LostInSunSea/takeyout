@@ -6,12 +6,20 @@
     {
         exit ("Error: Not logged in!");
     }
-
+	
     $id = $_SESSION["id"];
 
     //$id = 'A0BwIAdiU9';
-
-    $ch = curl_init();
+    function httpGet($url)
+	{
+    	$ch = curl_init();  
+		curl_setopt($ch,CURLOPT_URL,$url);
+		curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+		//  curl_setopt($ch,CURLOPT_HEADER, false); 
+		$output=curl_exec($ch); 
+		curl_close($ch);
+		return $output;
+	}
 
     //TODO: call auto_delete_trips.php here
 
@@ -47,13 +55,10 @@
                     'endDate' => null,
                     'backgroundImage' => null
                 );
-                curl_setopt_array($ch, array(
-                    CURLOPT_RETURNTRANSFER => 1,
-                    CURLOPT_URL => 'http://kawaiikrew.net/www/php/get_trip_picture.php?location=' . $row['city'] . ',%20' . $row['country'],
-                    CURLOPT_USERAGENT => 'cURL Request'
-                ));
-
-                $resp = curl_exec($ch);
+                $city=urlencode($row['city']);
+                $country=urlencode($row['country']);
+                $url='http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $city . "&country=" . $country;
+                $resp = httpGet($url);
                 $bus['backgroundImage'] = $resp;
                 array_push($json, $bus);
             }
@@ -83,15 +88,10 @@
                 'endDate' => $row['endDate'],
                 'backgroundImage' => null
             );
-
-            curl_setopt_array($ch, array(
-                CURLOPT_RETURNTRANSFER => 1,
-                CURLOPT_URL => 'http://kawaiikrew.net/www/php/get_trip_picture.php?location=' . $row['city'] . ',%20' . $row['country'],
-                CURLOPT_USERAGENT => 'cURL Request'
-            ));
-
-            $resp = curl_exec($ch);
-
+            $city=urlencode($row['city']);
+            $country=urlencode($row['country']);
+            $url='http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $city . "&country=" . $country;
+            $resp = httpGet($url);
             $bus['backgroundImage'] = $resp;
             array_push($json, $bus);
         }
@@ -100,10 +100,6 @@
     {
         echo "Error updating record: " . mysqli_error($conn);
     }
-
-
-    curl_close($ch);
-
     $jsonstring = json_encode($json);
     echo $jsonstring;
 
