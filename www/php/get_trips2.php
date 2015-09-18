@@ -59,10 +59,6 @@
                 $country=urlencode($row['country']);
                 $url='http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $city . "&country=" . $country;
                 $resp = httpGet($url);
-                echo($url);
-                echo("\n");
-                echo($resp);
-                echo("\n");
                 $bus['backgroundImage'] = $resp;
                 array_push($json, $bus);
             }
@@ -92,12 +88,10 @@
                 'endDate' => $row['endDate'],
                 'backgroundImage' => null
             );
-            $url='http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country'];
+            $city=urlencode($row['city']);
+            $country=urlencode($row['country']);
+            $url='http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $city . "&country=" . $country;
             $resp = httpGet($url);
-            echo($url);
-            echo("\n");
-			echo($resp);
-			echo("\n");
             $bus['backgroundImage'] = $resp;
             array_push($json, $bus);
         }
@@ -107,7 +101,6 @@
         echo "Error updating record: " . mysqli_error($conn);
     }
     $jsonstring = json_encode($json);
-    echo("\n");
     echo $jsonstring;
 
 ?>
