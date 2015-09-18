@@ -92,16 +92,16 @@
             );
             var_dump($bus);
             echo("\n");
-           
+            var $url='http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country'];
             curl_setopt_array($ch, array(
                 CURLOPT_RETURNTRANSFER => 1,
-                CURLOPT_URL => 'http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country'],
+                CURLOPT_URL => $url,
                 CURLOPT_USERAGENT => 'cURL Request'
             ));
 
             $resp = curl_exec($ch);
-            echo('http://kawaiikrew.net/www/php/get_trip_picture.php?city=' . $row['city'] . "&country=" . $row['country']);
-                echo("\n");
+            echo($url);
+            echo("\n");
 			echo($resp);
 			echo("\n");
             $bus['backgroundImage'] = $resp;
