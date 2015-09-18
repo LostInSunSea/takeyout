@@ -48,7 +48,6 @@
                     'backgroundImage' => null
                 );
                 echo("fuck\n");
-                echo($bus[city]);
                 var_dump($bus);
                 echo("\n");
                 
@@ -88,8 +87,10 @@
                 'endDate' => $row['endDate'],
                 'backgroundImage' => null
             );
-            echo("cock\n");
-            echo(array_values($bus));
+            
+            echo("test\n");
+            var_dump($bus);
+            echo("\n");
            
             curl_setopt_array($ch, array(
                 CURLOPT_RETURNTRANSFER => 1,
