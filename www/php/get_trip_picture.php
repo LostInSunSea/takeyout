@@ -10,9 +10,9 @@ session_start();
 
 //TODO: Perform regular expression match to make sure it's actually in the format "city, country"
 
-$locationString = htmlspecialchars($_GET['location']);
+//$locationString = htmlspecialchars($_GET['location']);
 $city = htmlspecialchars($_GET["city"]);
-$country = htmlspecialchars($_GET["location"]);
+$country = htmlspecialchars($_GET["country"]);
 //echo $locationString;
 $dbHost = "localhost";
 $dbUser = "root";
