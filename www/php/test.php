@@ -1,9 +1,9 @@
 <?php
 
-$dbHost = '45.55.30.181';
+$dbHost = 'localhost';
 $dbUser = "root";
-$dbPass = "keyboard cat";
-$dbDatabase = "SDHacks2015";
+$dbPass = "J^mpStrt";
+$dbDatabase = "takeyout";
 
 $conn = new mysqli($dbHost, $dbUser, $dbPass, $dbDatabase);
 if ($conn->connect_error)
@@ -11,7 +11,7 @@ if ($conn->connect_error)
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM stories";
+$sql = "SELECT * FROM user";
 
 if ($result=mysqli_query($conn,$sql)) {
     echo $result;
