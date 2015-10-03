@@ -1,6 +1,6 @@
 <?php
 
-$dbHost = 'kawaiikrew.net';
+$dbHost = '104.236.199.139';
 $dbUser = "root";
 $dbPass = "J^mpStrt";
 $dbDatabase = "takeyout";
