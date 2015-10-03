@@ -2,7 +2,7 @@
 
 $dbHost = '45.55.30.181';
 $dbUser = "root";
-$dbPass = "";
+$dbPass = "keyboard cat";
 $dbDatabase = "SDHacks2015";
 
 $conn = new mysqli($dbHost, $dbUser, $dbPass, $dbDatabase);
