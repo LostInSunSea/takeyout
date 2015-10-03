@@ -1,6 +1,6 @@
 <?php
 
-$dbHost = '45.55.30.181:3000';
+$dbHost = '45.55.30.181';
 $dbUser = "root";
 $dbPass = "keyboard cat";
 $dbDatabase = "SDHacks2015";
