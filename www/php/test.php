@@ -13,8 +13,22 @@ if ($conn->connect_error)
 
 $sql = "SELECT * FROM user";
 
+$json = array();
+
 if ($result=mysqli_query($conn,$sql)) {
-    echo $result;
+    while ($row = mysqli_fetch_array($result))
+    {
+        $bus = array(
+            'name' => $row['name']
+        );
+
+        array_push($json, $bus);
+    }
 }
+
+$jsonstring = json_encode($json);
+echo $jsonstring;
+
+$conn -> close();
 
 ?>
