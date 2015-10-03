@@ -1,8 +1,8 @@
 <?php
 
 $dbHost = '45.55.30.181';
-$dbUser = "root@SDHacks";
-$dbPass = "keyboard cat";
+$dbUser = "root";
+$dbPass = "";
 $dbDatabase = "SDHacks2015";
 
 $conn = new mysqli($dbHost, $dbUser, $dbPass, $dbDatabase);
