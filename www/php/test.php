@@ -1,6 +1,6 @@
 <?php
 
-$dbHost = 'localhost';
+$dbHost = 'kawaiikrew.net';
 $dbUser = "root";
 $dbPass = "J^mpStrt";
 $dbDatabase = "takeyout";
