@@ -14,7 +14,7 @@ if ($conn->connect_error)
 $sql = "SELECT * FROM user";
 
 if ($result=mysqli_query($conn,$sql)) {
-    echo $result;
+    echo "done";
 }
 
 ?>
